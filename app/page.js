@@ -1,10 +1,7 @@
-import SwitchTheme from "@/components/switch-theme";
-
 export default function Home() {
 	return (
 		<div>
-			<h1>Home</h1>
-			<SwitchTheme />
+			<h1>Home Page</h1>
 		</div>
 	);
 }

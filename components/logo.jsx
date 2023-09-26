@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Logo = () => {
 	return (
-		<Link href="/" className="flex items-end gap-1 select-none">
+		<Link href="/" className="flex items-center gap-[6px] select-none w-max">
 			<Image
 				src="/logo.png"
 				width={26}

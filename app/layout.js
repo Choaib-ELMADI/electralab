@@ -7,9 +7,9 @@ import Providers from "./providers";
 import "./globals.css";
 
 export const metadata = {
-	title: "ElectraLab",
+	title: "ELECTRALAB.ino",
 	description:
-		"ElectraLab is a platform for electronics engineering students and electronics enthusiasts. You can find Arduino projects, Raspberry, Computer Vision and more.",
+		"ELECTRALAB is a platform for electronics engineering students and electronics enthusiasts. You can find Arduino projects, Raspberry, Computer Vision and more.",
 };
 
 export default function RootLayout({ children }) {
