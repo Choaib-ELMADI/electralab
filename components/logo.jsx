@@ -1,22 +1,19 @@
-"use client";
-
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
 const Logo = () => {
-	const { resolvedTheme } = useTheme();
-
 	return (
-		<Link href="/">
+		<Link href="/" className="flex items-end gap-1 select-none">
 			<Image
-				src={resolvedTheme === "dark" ? "/logo-white.png" : "/logo-black.png"}
-				width={35}
-				height={35}
+				src="/logo.png"
+				width={26}
+				height={26}
 				alt="ElectraLab Logo"
 				draggable="false"
 			/>
-			<h1>ElectraLab</h1>
+			<h1 className="hidden sm:block text-[21px] leading-[21px] font-bold uppercase">
+				ElectraLab
+			</h1>
 		</Link>
 	);
 };

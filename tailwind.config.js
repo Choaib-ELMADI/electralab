@@ -33,12 +33,12 @@ module.exports = {
 				tertiary: "var(--tertiary)",
 				hovery: "var(--hovery)",
 
-				brand: "var(--brand)",
-				orange: "var(--orange)",
 				red: "var(--red)",
+				pink: "var(--pink)",
+				green: "var(--green)",
+				orange: "var(--orange)",
 				purple: "var(--purple)",
 				lightpurple: "var(--lightpurple)",
-				green: "var(--green)",
 			},
 			fontSize: {
 				xlarge: "var(--xlarge)",
@@ -49,6 +49,7 @@ module.exports = {
 				tiny: "var(--tiny)",
 			},
 			borderRadius: {
+				full: "999px",
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",

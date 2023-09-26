@@ -1,5 +1,5 @@
-const montserrat = Inter({ subsets: ["latin"] });
-import { Inter } from "next/font/google";
+const montserrat = Montserrat({ subsets: ["latin"] });
+import { Montserrat } from "next/font/google";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -18,7 +18,9 @@ export default function RootLayout({ children }) {
 			<body className={montserrat.className}>
 				<Providers>
 					<Navbar />
-					<main>{children}</main>
+					<main className="max-w-[1800px] mx-auto px-2 md:px-4 dm:px-6">
+						{children}
+					</main>
 					<Footer />
 				</Providers>
 			</body>
