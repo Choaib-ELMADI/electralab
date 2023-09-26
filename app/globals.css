@@ -13,18 +13,30 @@
 
     --red: #f93535;
     --pink: #f926ae;
-    --green: #16f8b6;
+    --green: #089369;
     --orange: #e78c24;
     --purple: #583fc6;
     --lightpurple: #9a0eb3;
 
     --radius: 0.5rem;
-    --xlarge: 40px;
+    --xlarge: 36px;
     --large: 24px;
     --medium: 20px;
     --normal: 18px;
     --small: 16px;
     --tiny: 15px;
+
+    @media screen and (width <=1800px) {
+      --xlarge: 30px;
+    }
+
+    @media screen and (width <=900px) {
+      --xlarge: 28px;
+    }
+
+    @media screen and (width <=725px) {
+      --xlarge: 26px;
+    }
   }
 
   .dark {
@@ -34,6 +46,8 @@
     --secondary: #b1b1b1;
     --tertiary: #686868;
     --hovery: #e0e0e033;
+
+    --green: #16f8b6;
   }
 }
 
