@@ -31,7 +31,7 @@ const services = [
 const Services = () => {
 	return (
 		<div
-			className="w-full max-w-[1200px] mx-auto mt-12 grid gap-4 grid-cols-1 mn:grid-cols-2"
+			className="w-full max-w-[1200px] mx-auto mt-16 grid gap-4 grid-cols-1 mn:grid-cols-2"
 			id="services"
 		>
 			<div>
@@ -53,7 +53,7 @@ const Services = () => {
 						className="bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(0,0,0,0.4)] backdrop-blur-lg border border-hovery rounded-sm py-2 px-3 w-full sticky top-4"
 						key={`service-${i + 1}`}
 					>
-						<service.icon size={60} className="mb-2 opacity-80" />
+						<service.icon className="mb-2 opacity-80 w-10 h-10 md:w-[60px] md:h-[60px]" />
 						<h1 className="font-[600] text-small ml-1">{service.title}</h1>
 						<p className="text-tiny opacity-80 ml-1">{service.description}</p>
 					</div>

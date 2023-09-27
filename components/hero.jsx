@@ -44,8 +44,8 @@ const Hero = () => {
 					<span className="text-purple">Arduino</span> & <br />
 					<span className="text-pink">Microcontrollers</span>.
 				</h1>
-				<p className="w-full max-w-[500px] mn:max-w-[600px] text-small">
-					<b className="bg-gradient-to-r from-purple to-pink bg-clip-text text-[transparent]">
+				<p className="w-full max-w-[500px] mn:max-w-[600px] text-tiny">
+					<b className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent">
 						ELECTRALAB
 					</b>{" "}
 					is a platform that enables hobbyists, designers, and engineers to
@@ -53,7 +53,7 @@ const Hero = () => {
 					robotic systems.
 				</p>
 			</div>
-			<div className="w-full max-w-[1200px] aspect-[2.5/1] min-h-[260px] mx-auto rounded-lg overflow-hidden relative">
+			<div className="w-full max-w-[1200px] aspect-auto md:aspect-[2.5/1] mx-auto rounded-lg overflow-hidden relative">
 				<Image
 					src="/banner.webp"
 					width={800}
@@ -63,7 +63,7 @@ const Hero = () => {
 					draggable="false"
 					priority={true}
 				/>
-				<p className="absolute bottom-0 left-0 w-full z-[4] bg-purple text-background dark:text-text text-center text-[12px] sm:text-tiny px-1">
+				<p className="absolute bottom-0 left-0 w-full z-[4] bg-purple text-background dark:text-text text-center text-[10px] px-1">
 					Arduino Uno R3 microcontroller board, 14 digital input/output pins, 6
 					analog inputs.
 				</p>
@@ -77,7 +77,7 @@ const Hero = () => {
 							width={100}
 							height={30}
 							draggable="false"
-							className="w-[100px] aspect-[1.5/1] object-contain grayscale group-hover:grayscale-0 transition-all mix-blend-color-burn"
+							className="w-[60px] md:w-[80px] aspect-[1.5/1] object-contain grayscale group-hover:grayscale-0 transition-all"
 						/>
 					</Link>
 				))}
