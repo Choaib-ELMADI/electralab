@@ -48,7 +48,7 @@ const WhatWeCreate = () => {
 					{creates.map(({ title, desc, icon }, i) => (
 						<div
 							key={i}
-							className="group sticky top-4 bg-purple p-2 rounded-sm"
+							className="group sticky top-4 bg-purple p-2 rounded-sm border border-[#000]"
 						>
 							<Image
 								src={icon}
@@ -67,7 +67,7 @@ const WhatWeCreate = () => {
 							<p className="text-tiny text-[#b1b1b1]">{desc}</p>
 						</div>
 					))}
-					<div className="group sticky top-4 bg-pink text-background dark:text-text p-2 rounded-sm">
+					<div className="group sticky top-4 bg-pink text-background dark:text-text p-2 rounded-sm border border-[#000]">
 						<p className="uppercase">Now We Work</p>
 						<h1 className="font-bold text-medium mb-6">
 							Let's create your next big project together.
