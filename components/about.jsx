@@ -11,7 +11,7 @@ const About = () => {
 					Why ELECTRALAB
 				</h1>
 				<h1 className="text-large leading-[25px] font-bold bg-gradient-to-r from-green to-purple bg-clip-text text-transparent w-max">
-					Stunning digital <br /> experiences.
+					Stunning Digital <br /> Experiences.
 				</h1>
 			</div>
 			<div>

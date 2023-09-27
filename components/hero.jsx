@@ -63,7 +63,7 @@ const Hero = () => {
 					draggable="false"
 					priority={true}
 				/>
-				<p className="absolute bottom-0 left-0 w-full z-[4] bg-purple text-background dark:text-text text-center text-[10px] px-1">
+				<p className="absolute bottom-0 left-0 w-full z-[4] bg-purple text-background dark:text-text text-center text-[11px] px-1">
 					Arduino Uno R3 microcontroller board, 14 digital input/output pins, 6
 					analog inputs.
 				</p>
