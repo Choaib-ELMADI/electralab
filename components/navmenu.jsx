@@ -44,7 +44,7 @@ const NavMenu = () => {
 				href="mailto:choaib3elmadi@gmail.com"
 				className="bg-gradient-to-r from-purple to-pink text-tiny text-background dark:text-text px-4 py-[2px] rounded-full whitespace-nowrap hidden dm:flex items-center gap-2"
 			>
-				<Mail size={18} /> Lets Talk
+				<Mail size={18} /> Let&rsquo;s Talk
 			</Link>
 			<SwitchTheme />
 			<SmallNavMenu links={links} />
