@@ -38,7 +38,7 @@ export const sponsors = [
 const Hero = () => {
 	return (
 		<div className="mt-8">
-			<div className="flex flex-col justify-start gap-2 mn:flex-row mn:justify-around mn:items-end mn:gap-8 mb-4">
+			<div className="w-full max-w-[1200px] mx-auto flex flex-col justify-start gap-2 mn:flex-row mn:justify-between mn:items-end mn:gap-8 mb-4">
 				<h1 className="text-xlarge font-bold">
 					<span className="text-green">CV</span>,{" "}
 					<span className="text-purple">Arduino</span> & <br />
@@ -61,13 +61,14 @@ const Hero = () => {
 					alt="ElectraLab Banner"
 					className="w-full h-full object-cover"
 					draggable="false"
+					priority={true}
 				/>
 				<p className="absolute bottom-0 left-0 w-full z-[4] bg-purple text-background dark:text-text text-center text-[12px] sm:text-tiny px-1">
 					Arduino Uno R3 microcontroller board, 14 digital input/output pins, 6
 					analog inputs.
 				</p>
 			</div>
-			<div className="flex items-center justify-center gap-8 mt-4">
+			<div className="w-full max-w-[1200px] mx-auto flex flex-wrap items-center justify-center gap-8 mt-4">
 				{sponsors.map((s, i) => (
 					<Link key={i} href={s.link} target="_blank" className="group">
 						<Image

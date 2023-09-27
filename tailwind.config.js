@@ -15,6 +15,7 @@ module.exports = {
 			mn: "725px",
 			dm: "901px",
 			lg: "976px",
+			ltg: "1201px",
 			xl: "1440px",
 		},
 		container: {
