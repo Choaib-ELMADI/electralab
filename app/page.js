@@ -1,4 +1,5 @@
 import WhatWeCreate from "@/components/what-we-create";
+import Testimonials from "@/components/testimonials";
 import Services from "@/components/services";
 import About from "@/components/about";
 import Hero from "@/components/hero";
@@ -10,6 +11,7 @@ export default function Home() {
 			<Services />
 			<About />
 			<WhatWeCreate />
+			<Testimonials />
 			<div className="h-[1000px]"></div>
 		</>
 	);
