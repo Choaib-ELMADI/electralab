@@ -4,16 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
-const completedProjects = [
-	{
-		link: "diy-car",
-		label: "Diy Car",
-	},
-	{
-		link: "diy-drone",
-		label: "Diy Drone",
-	},
-];
+import { completedProjects } from "@/lib/data";
 
 const CompletedProjectsMenu = () => {
 	const [viewProjectsList, setviewProjectsList] = useState(false);
@@ -34,12 +25,12 @@ const CompletedProjectsMenu = () => {
 					initial="hidden"
 					animate="visible"
 				>
-					{completedProjects.map(({ link, label }) => (
+					{completedProjects.map(({ link, title }) => (
 						<Link
 							href={`/projects/${link}`}
 							className="group whitespace-nowrap text-tiny relative"
 						>
-							{label}
+							{title}
 							<span className="absolute left-0 -bottom-[2px] bg-gradient-to-r from-purple to-pink rounded-full h-[2px] w-0 group-hover:w-full transition-all" />
 						</Link>
 					))}

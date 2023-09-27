@@ -17,7 +17,10 @@ const testimonials = [
 
 const Testimonials = () => {
 	return (
-		<div className="w-full max-w-[1200px] mx-auto mt-20 grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 dm:grid-cols-4 gap-2">
+		<div
+			className="w-full max-w-[1200px] mx-auto mt-20 grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 dm:grid-cols-4 gap-2"
+			id="testimonials"
+		>
 			<div className="rounded-sm min-h-[200px] relative overflow-hidden">
 				<Image
 					src="/testimonials-intro.jpg"

@@ -54,6 +54,7 @@
 @layer base {
   body {
     @apply bg-background text-text text-normal custom-scrollbar;
+    scroll-behavior: smooth;
   }
 }
 
@@ -76,8 +77,4 @@
 
 .custom-scrollbar:hover::-webkit-scrollbar-thumb {
   background: var(--tertiary);
-}
-
-* {
-  scroll-behavior: smooth;
 }
