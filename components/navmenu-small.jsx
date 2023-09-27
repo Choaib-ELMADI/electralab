@@ -5,6 +5,7 @@ import { Menu, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+import SocialLinks from "./social-links";
 import Logo from "./logo";
 
 const SmallNavMenu = ({ links }) => {
@@ -29,7 +30,7 @@ const SmallNavMenu = ({ links }) => {
 
 			{viewSmallNavMenu && (
 				<motion.div
-					className="fixed top-0 left-0 w-full h-screen overflow-y-auto custom-scrollbar px-2 md:px-4 dm:px-6 py-[17px] bg-hovery backdrop-blur-md z-50 flex flex-col"
+					className="fixed top-0 left-0 w-full h-screen overflow-y-auto custom-scrollbar px-2 md:px-4 dm:px-6 py-[17px] bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(0,0,0,0.4)] backdrop-blur-lg z-50 flex flex-col"
 					variants={{ hidden: { y: "-16px" }, visible: { y: "0px" } }}
 					initial="hidden"
 					animate="visible"
@@ -53,6 +54,7 @@ const SmallNavMenu = ({ links }) => {
 					>
 						<Mail size={24} /> Lets Talk
 					</Link>
+					<SocialLinks styles="mt-4" />
 				</motion.div>
 			)}
 		</div>

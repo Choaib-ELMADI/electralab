@@ -7,19 +7,19 @@ import SwitchTheme from "./switch-theme";
 
 const links = [
 	{
-		link: "#services",
+		link: "/#services",
 		label: "Services",
 	},
 	{
-		link: "#work",
-		label: "Work",
-	},
-	{
-		link: "#about",
+		link: "/#about",
 		label: "About",
 	},
 	{
-		link: "#testimonials",
+		link: "/#work",
+		label: "Work",
+	},
+	{
+		link: "/#testimonials",
 		label: "Testimonials",
 	},
 ];
