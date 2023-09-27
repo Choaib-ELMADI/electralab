@@ -12,7 +12,6 @@ export default function Home() {
 			<About />
 			<WhatWeCreate />
 			<Testimonials />
-			<div className="h-[1000px]"></div>
 		</>
 	);
 }
