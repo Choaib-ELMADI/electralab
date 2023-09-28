@@ -5,7 +5,7 @@ import { completedProjects } from "@/lib/data";
 
 const SingleWork = ({ project: { image, link, title } }) => {
 	return (
-		<div className="rounded-lg overflow-hidden sticky top-4 border border-[#000]">
+		<div className="rounded-sm overflow-hidden sticky top-4 border border-[#000]">
 			<Image
 				src={image}
 				width={1280}

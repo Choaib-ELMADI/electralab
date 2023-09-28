@@ -1,6 +1,7 @@
 const montserrat = Montserrat({ subsets: ["latin"] });
 import { Montserrat } from "next/font/google";
 
+import AuroraBg from "@/components/aurora-bg";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Providers from "./providers";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={montserrat.className}>
 				<Providers>
+					<AuroraBg />
 					<Navbar />
 					<main className="max-w-[1800px] mx-auto px-2 md:px-4 dm:px-6">
 						{children}

@@ -36,7 +36,7 @@ const WhatWeCreate = () => {
 						alt="Banner Image"
 						draggable="false"
 						priority={true}
-						className="w-full aspect-[2.5/1] object-cover rounded-lg"
+						className="w-full aspect-[2.5/1] object-cover rounded-sm"
 					/>
 				</div>
 			</div>

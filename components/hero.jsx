@@ -53,7 +53,7 @@ const Hero = () => {
 					robotic systems.
 				</p>
 			</div>
-			<div className="w-full max-w-[1200px] aspect-auto md:aspect-[2.5/1] mx-auto rounded-lg overflow-hidden relative">
+			<div className="w-full max-w-[1200px] aspect-auto md:aspect-[2.5/1] mx-auto rounded-sm overflow-hidden relative">
 				<Image
 					src="/banner.webp"
 					width={800}
