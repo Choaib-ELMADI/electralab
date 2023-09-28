@@ -5,7 +5,7 @@ const NavigateToOtherProjects = ({
 	props: { next, nextTitle, prev, prevTitle },
 }) => {
 	return (
-		<div className="flex items-center justify-between mb-4 w-full max-w-[600px] mx-auto">
+		<div className="flex items-center justify-between mb-4 mt-8 w-full max-w-[600px] mx-auto">
 			<Link
 				href={prev}
 				className="flex items-center gap-1 text-small text-secondary whitespace-nowrap"

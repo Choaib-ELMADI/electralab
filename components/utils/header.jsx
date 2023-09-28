@@ -4,7 +4,7 @@ import Link from "next/link";
 const Header = ({ props: { banner, profile, title, link, user } }) => {
 	return (
 		<div className="flex flex-col items-center my-16">
-			<h1 className="text-large font-semibold">{title}</h1>
+			<h1 className="text-large font-semibold text-center">{title}</h1>
 			<div className="flex gap-2 items-center my-3">
 				<Image
 					src={profile}
