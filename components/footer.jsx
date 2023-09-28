@@ -19,7 +19,7 @@ const Footer = () => {
 					<Link
 						href="https://elmadichoaib.vercel.app"
 						target="_blank"
-						className="relative bg-gradient-to-r from-purple to-pink text-transparent bg-clip-text after:absolute after:left-0 after:bottom-[1px] after:w-full after:h-[1px] after:bg-gradient-to-r after:from-purple after:to-pink font-semibold"
+						className="relative bg-gradient-to-r from-purple to-pink text-transparent bg-clip-text after:absolute after:left-0 after:bottom-[1px] after:w-full after:h-[1px] after:bg-gradient-to-r after:from-purple after:to-pink font-semibold whitespace-nowrap"
 					>
 						Choaib ELMADI
 					</Link>
