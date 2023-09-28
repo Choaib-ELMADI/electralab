@@ -26,13 +26,15 @@ const SingleWork = ({ project: { image, link, title } }) => {
 
 const Work = () => {
 	return (
-		<div
-			className="w-full max-w-[1200px] mx-auto mt-16 grid grid-cols-1 gap-4 mn:grid-cols-2"
-			id="work"
-		>
-			{completedProjects.map((project) => (
-				<SingleWork project={project} key={project.title} />
-			))}
+		<div className="w-full max-w-[1200px] mx-auto mt-16">
+			<h1 className="text-large leading-[25px] font-bold bg-gradient-to-r from-green to-purple bg-clip-text text-transparent w-max mb-2">
+				Projects <br /> Collection.
+			</h1>
+			<div className="grid grid-cols-1 gap-4 mn:grid-cols-2" id="work">
+				{completedProjects.map((project) => (
+					<SingleWork project={project} key={project.title} />
+				))}
+			</div>
 		</div>
 	);
 };

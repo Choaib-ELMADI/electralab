@@ -74,7 +74,7 @@ const WhatWeCreate = () => {
 						</h1>
 						<Link
 							href="mailto:choaib3elmadi@gmail.com"
-							className="bg-gradient-to-r from-purple to-pink text-small text-background dark:text-text px-4 py-1 rounded-sm whitespace-nowrap hidden dm:flex items-center gap-2"
+							className="bg-gradient-to-r from-purple to-pink text-small text-background dark:text-text px-4 py-1 rounded-sm whitespace-nowrap flex items-center gap-2"
 						>
 							<Mail size={20} /> Get In Touch
 						</Link>

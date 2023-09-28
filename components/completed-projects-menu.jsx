@@ -28,6 +28,7 @@ const CompletedProjectsMenu = () => {
 					{completedProjects.map(({ link, title }) => (
 						<Link
 							href={`/projects/${link}`}
+							onClick={() => setviewProjectsList(false)}
 							className="group whitespace-nowrap text-tiny relative"
 						>
 							{title}

@@ -11,7 +11,7 @@ export default function NotFound() {
 			<h1 className="text-medium">Page Not Found</h1>
 			<Link
 				href="/"
-				className="bg-gradient-to-r from-purple to-pink text-background dark:text-text text-medium rounded-full px-8 py-1 mt-2 hover:underline"
+				className="bg-gradient-to-r from-purple to-pink text-background dark:text-text text-medium rounded-full px-8 mt-2 hover:underline"
 			>
 				Home
 			</Link>
