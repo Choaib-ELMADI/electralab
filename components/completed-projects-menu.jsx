@@ -30,6 +30,7 @@ const CompletedProjectsMenu = () => {
 							href={`/projects/${link}`}
 							onClick={() => setviewProjectsList(false)}
 							className="group whitespace-nowrap text-tiny relative"
+							key={title}
 						>
 							{title}
 							<span className="absolute left-0 -bottom-[2px] bg-gradient-to-r from-purple to-pink rounded-full h-[2px] w-0 group-hover:w-full transition-all" />

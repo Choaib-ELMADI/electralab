@@ -70,7 +70,7 @@ const WhatWeCreate = () => {
 					<div className="group sticky top-4 bg-pink text-background dark:text-text p-2 rounded-sm border border-[#000]">
 						<p className="uppercase">Now We Work</p>
 						<h1 className="font-bold text-medium mb-6">
-							Let's create your next big project together.
+							Let&rsquo;s create your next big project together.
 						</h1>
 						<Link
 							href="mailto:choaib3elmadi@gmail.com"

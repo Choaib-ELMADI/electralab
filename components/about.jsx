@@ -30,8 +30,8 @@ const About = () => {
 					<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent">
 						<b>With our collection</b>
 					</span>{" "}
-					of Arduino projects, you'll be able to build everything from simple
-					circuits to complex robots, all while honing your skills and
+					of Arduino projects, you&rsquo;ll be able to build everything from
+					simple circuits to complex robots, all while honing your skills and
 					unleashing your creativity.
 				</p>
 				<div className="mt-6 flex flex-col gap-4 w-full max-w-[700px]">
