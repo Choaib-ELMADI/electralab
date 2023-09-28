@@ -1,3 +1,4 @@
+import { LinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -85,7 +86,16 @@ export const CircuitDiagram = ({
 }) => {
 	return (
 		<div id={id} className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
 			<p className="text-small mb-2">{description}</p>
 			<Image
 				src={image}
@@ -105,7 +115,16 @@ export const AssembleParts = ({
 }) => {
 	return (
 		<div id={id} className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
 			<p className="text-small mb-2">{description}</p>
 			<div className="grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 gap-2">
 				{images.map((image, i) => (
@@ -122,6 +141,40 @@ export const AssembleParts = ({
 				))}
 			</div>
 			<p className="text-small mt-2">{conclusion}</p>
+		</div>
+	);
+};
+
+export const Conclusion = ({
+	props: { title, descriptions, image, images },
+}) => {
+	return (
+		<div className="mt-8">
+			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
+			<p className="text-small mb-2">{descriptions[0]}</p>
+			<p className="text-small mb-2">{descriptions[1]}</p>
+			<Image
+				src={image}
+				width={800}
+				height={360}
+				draggable="false"
+				alt="Image"
+				className="w-full h-full rounded-sm object-cover mb-2"
+			/>
+			<div className="grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 gap-2">
+				{images.map((image, i) => (
+					<div key={`image-${i}`} className="sm:max-h-[200px]">
+						<Image
+							src={image}
+							width={400}
+							height={400}
+							draggable="false"
+							alt={`${title} - ${i}`}
+							className="w-full h-full rounded-sm object-cover"
+						/>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

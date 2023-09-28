@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, Github } from "lucide-react";
+import { Copy, Github, LinkIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -21,7 +21,16 @@ const Code = ({ props: { id, title, description, githubLink, code } }) => {
 
 	return (
 		<div id={id} className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
 			<p className="text-small mb-2">{description}</p>
 			<Link
 				href={githubLink}

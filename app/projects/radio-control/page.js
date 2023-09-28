@@ -107,7 +107,13 @@ const receiverCode = `
 `;
 
 import NavigateToOtherProjects from "@/components/utils/navigate-other-projects";
-import { CircuitDiagram, AssembleParts, Introduction, Steps } from "./utils";
+import {
+	CircuitDiagram,
+	AssembleParts,
+	Introduction,
+	Steps,
+	Conclusion,
+} from "./utils";
 import AuthorInfo from "@/components/utils/author-info";
 import Support from "@/components/utils/support";
 import Header from "@/components/utils/header";
@@ -129,49 +135,111 @@ export default function RadioControl() {
 				<div>
 					<Introduction />
 					<Steps />
-					<CircuitDiagram
+
+					<>
+						<CircuitDiagram
+							props={{
+								id: "project-circuit-trs",
+								title: "Transmitter Circuit Diagram",
+								description:
+									"First of all, we need to create the electronic circuit for our transmitter. It consists of an Arduino Nano, 2 joysticks, a NRF24L01 module and a 100uF capacitor.",
+								image: "/projects/radio-control/transmitter-circuit.png",
+							}}
+						/>
+						<AssembleParts
+							props={{
+								id: "solder-electronics-trs",
+								title: "Assembling The Transmitter",
+								description:
+									"Based on the diagram above, we can now assemble and solder all the different pieces of the radio transmitter.",
+								images: [
+									"/projects/radio-control/transmitter-assembly-1.jpg",
+									"/projects/radio-control/transmitter-assembly-2.jpg",
+									"/projects/radio-control/transmitter-assembly-3.jpg",
+								],
+								conclusion:
+									"And Now, our radio transmitter is ready and we can repeat the same process with the receiver.",
+							}}
+						/>
+					</>
+
+					<>
+						<CircuitDiagram
+							props={{
+								id: "project-circuit-rcv",
+								title: "Receiver Circuit Diagram",
+								description:
+									"Just like the transmitter, we need to create the electronic circuit for our receiver. It consists of an Arduino Nano, a NRF24L01 module and a 100uF capacitor.",
+								image: "/projects/radio-control/receiver-circuit.png",
+							}}
+						/>
+						<AssembleParts
+							props={{
+								id: "solder-electronics-rcv",
+								title: "Assembling The Receiver",
+								description:
+									"Based on the diagram above, we can now assemble and solder all the different pieces of the radio receiver.",
+								images: [
+									"/projects/radio-control/receiver-assembly-1.jpg",
+									"/projects/radio-control/receiver-assembly-2.jpg",
+									"/projects/radio-control/receiver-assembly-3.jpg",
+								],
+								conclusion:
+									"Now that our radio receiver is ready, we can pair it with the transmitter so they can work together.",
+							}}
+						/>
+					</>
+
+					<>
+						<Code
+							props={{
+								id: "project-code-trs",
+								title: "Radio Transmitter Code",
+								description:
+									"NB: The address for both the receiver and the transmitter must be the same.",
+								githubLink: "https://github.com/Choaib-ELMADI",
+								code: transmitterCode,
+							}}
+						/>
+						<Code
+							props={{
+								id: "project-code-rcv",
+								title: "Radio Receiver Code",
+								description:
+									"NB: The address for both the receiver and the transmitter must be the same.",
+								githubLink: "https://github.com/Choaib-ELMADI",
+								code: receiverCode,
+							}}
+						/>
+					</>
+
+					<Conclusion
 						props={{
-							id: "project-circuit-trs",
-							title: "Transmitter Circuit Diagram",
-							description:
-								"First of all, we need to create the electronic circuit for our transmitter. It consists of an Arduino Nano, 2 joysticks, a NRF24L01 module and a 100uF capacitor.",
-							image: "/projects/radio-control/transmitter-circuit.png",
-						}}
-					/>
-					<AssembleParts
-						props={{
-							id: "solder-electronics-trs",
-							title: "Transmitter Circuit Diagram",
-							description:
-								"First of all, we need to create the electronic circuit for our transmitter. It consists of an Arduino Nano, 2 joysticks, a NRF24L01 module and a 100uF capacitor.",
-							images: [
-								"/projects/radio-control/transmitter-assembly-1.jpg",
-								"/projects/radio-control/transmitter-assembly-2.jpg",
-								"/projects/radio-control/transmitter-assembly-3.jpg",
+							title: "And Now, our project is completed",
+							descriptions: [
+								"To test our homemade remote control, I used it to operate two servo motors. We'll continue using it in our upcoming projects.",
+								"I hope you enjoyed this project and discovered something new. If you have any questions, please don't hesitate to ask, and be sure to explore my collection of Arduino projects.",
 							],
-							conclusion:
-								"And Now, our radio transmitter is ready and we can repeat the same process with the receiver.",
+							image: "/projects/radio-control/radio-control.jpg",
+							images: [
+								"/projects/radio-control/radio-control-1.jpg",
+								"/projects/radio-control/radio-control-2.jpg",
+								"/projects/radio-control/radio-control-3.jpg",
+							],
 						}}
 					/>
-					<Code
-						props={{
-							id: "project-code-trs",
-							title: "Arduino Code",
-							description:
-								"NB: The address for both the receiver and the transmitter must be the same.",
-							githubLink: "https://github.com/Choaib-ELMADI",
-							code: transmitterCode,
-						}}
-					/>
-					<NavigateToOtherProjects
-						props={{
-							prev: "/",
-							prevTitle: "Home",
-							next: "/projects/solar-panel",
-							nextTitle: "Solar Panel",
-						}}
-					/>
-					<Support />
+
+					<>
+						<NavigateToOtherProjects
+							props={{
+								prev: "/",
+								prevTitle: "Home",
+								next: "/projects/solar-panel",
+								nextTitle: "Solar Panel",
+							}}
+						/>
+						<Support />
+					</>
 				</div>
 				<AuthorInfo
 					props={{
