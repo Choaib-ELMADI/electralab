@@ -32,23 +32,27 @@ const Code = ({ props: { id, title, description, githubLink, code } }) => {
 				/>
 			</Link>
 			<p className="text-small mb-2">{description}</p>
-			<Link
-				href={githubLink}
-				target="_blank"
-				className="flex gap-1 text-normal hover:underline decoration-pink underline-offset-2 decoration-2 w-max"
-			>
-				<Github size={24} className="text-purple" />{" "}
-				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					Github
-				</span>
-			</Link>
-			<div className="group bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-[300px] overflow-auto custom-scrollbar mt-2 relative">
+			<div className="flex items-center justify-between">
+				<Link
+					href={githubLink}
+					target="_blank"
+					className="flex gap-1 text-normal hover:underline decoration-pink underline-offset-2 decoration-2 w-max"
+				>
+					<Github size={24} className="text-purple" />{" "}
+					<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
+						Github
+					</span>
+				</Link>
 				<button
-					className="hidden group-hover:flex items-center gap-1 fixed right-1 top-1 bg-hovery px-2 py-1 border border-hovery rounded-sm text-tiny"
+					className={`flex items-center gap-1 bg-hovery px-2 py-1 border border-hovery rounded-sm text-tiny transition-all ${
+						copied && "text-purple border-purple bg-transparent"
+					}`}
 					onClick={() => handleCopy()}
 				>
 					<Copy size={16} /> {copied ? "Copied" : "Copy"}
 				</button>
+			</div>
+			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-[300px] overflow-auto custom-scrollbar mt-2">
 				<pre className="text-small">{code}</pre>
 			</div>
 		</div>
