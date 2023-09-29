@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AuthorInfo = ({ props: { profile, description, link, name } }) => {
 	return (
-		<div className="hidden dm:flex flex-col items-center px-2">
+		<div className="hidden dm:flex flex-col items-center px-2 h-max sticky top-4">
 			<Link href={link} target="_blank">
 				<Image
 					src={profile}
