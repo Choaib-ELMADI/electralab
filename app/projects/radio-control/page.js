@@ -234,8 +234,8 @@ export default function RadioControl() {
 							props={{
 								prev: "/",
 								prevTitle: "Home",
-								next: "/projects/solar-panel",
-								nextTitle: "Solar Panel",
+								next: "/projects/cars-counter",
+								nextTitle: "Cars Counter",
 							}}
 						/>
 						<Support />
