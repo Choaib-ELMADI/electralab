@@ -38,15 +38,15 @@ export const sponsors = [
 const Hero = () => {
 	return (
 		<div className="mt-8">
-			<div className="w-full max-w-[1200px] mx-auto flex flex-col justify-start gap-2 mn:flex-row mn:justify-between mn:items-end mn:gap-8 mb-4">
-				<h1 className="text-xlarge font-bold truncate text-secondary">
+			<div className="w-full max-w-[1200px] mx-auto flex flex-col justify-start gap-2 dm:flex-row dm:justify-between dm:items-end dm:gap-8 mb-4">
+				<h1 className="text-xlarge font-bold text-secondary">
 					<span className="text-purple">Robotics, AI,</span>
 					<br />
 					and <span className="text-pink">Automation</span>:
 					<br />
-					<span className="text-green">Empowering the Future</span>.
+					<span className="text-green">Empowering the Future.</span>
 				</h1>
-				<p className="w-full max-w-[500px] mn:max-w-[600px] text-tiny">
+				<p className="w-full max-w-[500px] text-small">
 					<b className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent">
 						ELECTRALAB
 					</b>{" "}
