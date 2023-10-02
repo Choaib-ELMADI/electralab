@@ -39,10 +39,12 @@ const Hero = () => {
 	return (
 		<div className="mt-8">
 			<div className="w-full max-w-[1200px] mx-auto flex flex-col justify-start gap-2 mn:flex-row mn:justify-between mn:items-end mn:gap-8 mb-4">
-				<h1 className="text-xlarge font-bold">
-					<span className="text-green">CV</span>,{" "}
-					<span className="text-purple">Arduino</span> & <br />
-					<span className="text-pink">Microcontrollers</span>.
+				<h1 className="text-xlarge font-bold truncate text-secondary">
+					<span className="text-purple">Robotics, AI,</span>
+					<br />
+					and <span className="text-pink">Automation</span>:
+					<br />
+					<span className="text-green">Empowering the Future</span>.
 				</h1>
 				<p className="w-full max-w-[500px] mn:max-w-[600px] text-tiny">
 					<b className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent">
