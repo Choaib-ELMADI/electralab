@@ -1,13 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
 import { completedProjects } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 const CompletedProjectsMenu = () => {
 	const [viewProjectsList, setviewProjectsList] = useState(false);
+	const pathname = usePathname();
 
 	return (
 		<div className="relative">
@@ -33,7 +36,12 @@ const CompletedProjectsMenu = () => {
 							key={title}
 						>
 							{title}
-							<span className="absolute left-0 -bottom-[2px] bg-gradient-to-r from-purple to-pink rounded-full h-[2px] w-0 group-hover:w-full transition-all" />
+							<span
+								className={cn(
+									"absolute left-0 -bottom-[2px] bg-gradient-to-r from-purple to-pink rounded-full h-[2px] w-0 group-hover:w-full transition-all",
+									`/projects/${link}` === pathname && "w-full"
+								)}
+							/>
 						</Link>
 					))}
 				</motion.div>
