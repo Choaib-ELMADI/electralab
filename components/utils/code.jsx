@@ -52,7 +52,7 @@ const Code = ({ props: { id, title, description, githubLink, code } }) => {
 					<Copy size={16} /> {copied ? "Copied" : "Copy"}
 				</button>
 			</div>
-			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-[300px] overflow-auto custom-scrollbar mt-2">
+			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-2">
 				<pre className="text-small">{code}</pre>
 			</div>
 		</div>
