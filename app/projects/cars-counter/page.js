@@ -8,7 +8,9 @@ import Support from "@/components/utils/support";
 import Header from "@/components/utils/header";
 import Code from "@/components/utils/code";
 import {
+	Conclusion,
 	DemoWithImage,
+	DemoWithRealTimeVideo,
 	DemoWithVideo,
 	Introduction,
 	SetUpEnvironment,
@@ -287,7 +289,27 @@ export default function CarsCounter() {
 						/>
 					</>
 
-					<></>
+					<>
+						<DemoWithRealTimeVideo
+							props={{
+								id: "real-time-video",
+								title: "Real-Time Video",
+								description:
+									"Utilizing real-time video for our Car Counter system is as seamless and precise as working with static video footage. The technology adapts effortlessly, ensuring accurate car counting in both dynamic and stable scenarios.",
+								note: "I didn't test real-time video due to my PC's limitations, but it's a possibility for the future.",
+							}}
+						/>
+						<Conclusion
+							props={{
+								title: "Wrapping Up",
+								descriptions: [
+									"In conclusion, our Car Counter project showcases the power of computer vision technology and its real-world applications in traffic analysis. Through meticulous testing, we have demonstrated the system's reliability in both static images and dynamic video scenarios. By accurately counting cars and understanding traffic patterns, this project opens doors to innovative solutions for urban planning and transportation management.",
+									"As we wrap up this exploration, we invite you to continue this exciting journey with us, exploring the endless possibilities that technology offers in reshaping our cities and enhancing our everyday lives. ",
+									"Thank you for joining us on this adventure, and we look forward to a future where intelligent systems like our Car Counter contribute to smarter, more efficient urban environments.",
+								],
+							}}
+						/>
+					</>
 
 					<>
 						<NavigateToOtherProjects

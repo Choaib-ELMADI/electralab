@@ -1,4 +1,4 @@
-import { Github, LinkIcon } from "lucide-react";
+import { LinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -255,6 +255,39 @@ export const DemoWithVideo = ({
 			<video loop muted controls className="w-full rounded-sm">
 				<source src={video} />
 			</video>
+		</div>
+	);
+};
+
+export const DemoWithRealTimeVideo = ({
+	props: { id, title, description, note },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
+			<p className="text-small mb-2">
+				{description} <span className="text-red font-semibold">{note}</span>
+			</p>
+		</div>
+	);
+};
+
+export const Conclusion = ({ props: { title, descriptions } }) => {
+	return (
+		<div className="mt-8">
+			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
+			<p className="text-small mb-2">{descriptions[0]}</p>
+			<p className="text-small mb-2">{descriptions[1]}</p>
+			<p className="text-small">{descriptions[2]}</p>
 		</div>
 	);
 };
