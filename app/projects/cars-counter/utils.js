@@ -168,12 +168,12 @@ export const SetUpEnvironment = ({ id }) => {
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group relative text-medium mb-1 font-[500] w-max hover:text-purple transition-all"
 			>
 				Essential Requirements for the Project
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="absolute -right-6 top-[50%] translate-y-[25%] xxs:translate-y-[-50%] opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity block xxs:hidden xs:block"
 				/>
 			</Link>
 			<p className="text-small mb-2">
