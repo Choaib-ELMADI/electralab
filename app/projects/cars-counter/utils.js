@@ -207,7 +207,7 @@ export const SetUpEnvironment = ({ id }) => {
 	);
 };
 
-export const Demo = ({ props: { id, title, description, image, video } }) => {
+export const DemoWithImage = ({ props: { id, title, description, image } }) => {
 	return (
 		<div id={id} className="mt-8">
 			<Link
@@ -230,9 +230,31 @@ export const Demo = ({ props: { id, title, description, image, video } }) => {
 				priority={true}
 				className="w-full rounded-sm"
 			/>
-			{/* <video muted loop>
+		</div>
+	);
+};
+
+export const DemoWithVideo = ({
+	props: { id, title, description, video, note },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
+			<p className="text-small mb-2">
+				{description} <span className="text-red font-semibold">{note}</span>
+			</p>
+			<video loop muted controls className="w-full rounded-sm">
 				<source src={video} />
-			</video> */}
+			</video>
 		</div>
 	);
 };
