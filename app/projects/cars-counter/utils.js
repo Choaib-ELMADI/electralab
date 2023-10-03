@@ -192,9 +192,9 @@ export const SetUpEnvironment = ({ id }) => {
 						<ul className="ml-6 flex flex-col gap-2">
 							{items.map(({ title, description }) => (
 								<li key={title} className="">
-									<p className="text-small text-secondary">
-										<span className="font-semibold">{title}:</span>{" "}
-										<span className="opacity-80">{description}</span>
+									<p className="text-small">
+										<span className="text-text font-semibold">{title}:</span>{" "}
+										<span className="text-secondary">{description}</span>
 									</p>
 								</li>
 							))}
@@ -202,6 +202,36 @@ export const SetUpEnvironment = ({ id }) => {
 					</div>
 				))}
 			</div>
+		</div>
+	);
+};
+
+export const Demo = ({ props: { id, title, description, image, video } }) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+			>
+				{title}
+				<LinkIcon
+					size={20}
+					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+				/>
+			</Link>
+			<p className="text-small mb-2">{description}</p>
+			<Image
+				src={image}
+				width={900}
+				height={400}
+				draggable="false"
+				alt={title}
+				priority={true}
+				className="w-full rounded-sm"
+			/>
+			{/* <video muted loop>
+				<source src={video} />
+			</video> */}
 		</div>
 	);
 };
