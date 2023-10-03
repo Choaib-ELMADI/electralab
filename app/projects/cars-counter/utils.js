@@ -133,7 +133,8 @@ export const Introduction = () => {
 					My Car Counter Project
 				</span>{" "}
 				answers this question by utilizing object detection, a technology that
-				enables computers to "see" and recognize objects in images or videos.{" "}
+				enables computers to &rdquo;see&rdquo; and recognize objects in images
+				or videos.{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
 					Using Python and the YOLO model
 				</span>
