@@ -132,7 +132,7 @@ export default function RadioControl() {
 				}}
 			/>
 			<div className="grid grid-cols-1 dm:grid-cols-[auto_300px] gap-1">
-				<div>
+				<div className="overflow-hidden">
 					<Introduction />
 					<Steps />
 
