@@ -41,7 +41,7 @@ export const Introduction = () => {
 export const Steps = () => {
 	return (
 		<div className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">
+			<h1 className="text-medium mb-2 font-[500]">
 				So, these are the steps we&rsquo;re going to follow to complete this
 				project:
 			</h1>
@@ -88,15 +88,15 @@ export const CircuitDiagram = ({
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">{description}</p>
+			<p className="text-small mb-3">{description}</p>
 			<Image
 				src={image}
 				width={900}
@@ -117,15 +117,15 @@ export const AssembleParts = ({
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">{description}</p>
+			<p className="text-small mb-3">{description}</p>
 			<div className="grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 gap-2">
 				{images.map((image, i) => (
 					<div key={`image-${i}`} className="sm:max-h-[200px]">
@@ -140,7 +140,7 @@ export const AssembleParts = ({
 					</div>
 				))}
 			</div>
-			<p className="text-small mt-2">{conclusion}</p>
+			<p className="text-small">{conclusion}</p>
 		</div>
 	);
 };
@@ -150,9 +150,9 @@ export const Conclusion = ({
 }) => {
 	return (
 		<div className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
-			<p className="text-small mb-2">{descriptions[0]}</p>
-			<p className="text-small mb-2">{descriptions[1]}</p>
+			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
+			<p className="text-small mb-3">{descriptions[0]}</p>
+			<p className="text-small mb-3">{descriptions[1]}</p>
 			<Image
 				src={image}
 				width={800}

@@ -168,15 +168,15 @@ export const SetUpEnvironment = ({ id }) => {
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group relative text-medium mb-1 font-[500] w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				Essential Requirements for the Project
+				Essential Requirements for the Project{" "}
 				<LinkIcon
 					size={20}
-					className="absolute -right-6 top-[50%] translate-y-[25%] xxs:translate-y-[-50%] opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity block xxs:hidden xs:block"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">
+			<p className="text-small mb-3">
 				Before you dive into the world of intelligent car counting, it&rsquo;s
 				essential to equip yourself with the right tools and technologies. To
 				embark on this exciting project, make sure your system is geared up with
@@ -212,15 +212,15 @@ export const DemoWithImage = ({ props: { id, title, description, image } }) => {
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">{description}</p>
+			<p className="text-small mb-3">{description}</p>
 			<Image
 				src={image}
 				width={900}
@@ -241,15 +241,15 @@ export const DemoWithVideo = ({
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">
+			<p className="text-small mb-3">
 				{description} <span className="text-red font-semibold">{note}</span>
 			</p>
 			<video loop muted controls className="w-full rounded-sm">
@@ -266,15 +266,15 @@ export const DemoWithRealTimeVideo = ({
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">
+			<p className="text-small">
 				{description} <span className="text-red font-semibold">{note}</span>
 			</p>
 		</div>
@@ -284,9 +284,9 @@ export const DemoWithRealTimeVideo = ({
 export const Conclusion = ({ props: { title, descriptions } }) => {
 	return (
 		<div className="mt-8">
-			<h1 className="text-medium mb-1 font-[500]">{title}</h1>
-			<p className="text-small mb-2">{descriptions[0]}</p>
-			<p className="text-small mb-2">{descriptions[1]}</p>
+			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
+			<p className="text-small mb-3">{descriptions[0]}</p>
+			<p className="text-small mb-3">{descriptions[1]}</p>
 			<p className="text-small">{descriptions[2]}</p>
 		</div>
 	);

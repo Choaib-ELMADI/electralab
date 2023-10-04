@@ -23,15 +23,15 @@ const Code = ({ props: { id, title, description, githubLink, code } }) => {
 		<div id={id} className="mt-8">
 			<Link
 				href={`#${id}`}
-				className="group text-medium mb-1 font-[500] flex items-center gap-1 w-max hover:text-purple transition-all"
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
 			>
-				{title}
+				{title}{" "}
 				<LinkIcon
 					size={20}
-					className="opcity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity"
+					className="inline text-secondary group-hover:text-purple transition-all"
 				/>
 			</Link>
-			<p className="text-small mb-2">{description}</p>
+			<p className="text-small mb-3">{description}</p>
 			<div className="flex items-center justify-between">
 				<Link
 					href={githubLink}
@@ -52,7 +52,7 @@ const Code = ({ props: { id, title, description, githubLink, code } }) => {
 					<Copy size={16} /> {copied ? "Copied" : "Copy"}
 				</button>
 			</div>
-			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-2">
+			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-3">
 				<pre className="text-small">{code}</pre>
 			</div>
 		</div>
