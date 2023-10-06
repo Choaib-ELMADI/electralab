@@ -316,8 +316,8 @@ export default function CarsCounter() {
 							props={{
 								prev: "/projects/radio-control",
 								prevTitle: "Radio Control",
-								next: "/",
-								nextTitle: "Home",
+								next: "/projects/people-tracking",
+								nextTitle: "People Tracking",
 							}}
 						/>
 						<Support />
