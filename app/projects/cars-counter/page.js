@@ -25,7 +25,7 @@ const staticImageTestingCode = `
 		Static Image Test
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   github.com/Choaib-ELMADI
+		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
 	"""
 
 	from ultralytics import YOLO  
@@ -51,7 +51,7 @@ const staticVideoTestingCode = `
 		Static Video Test
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   github.com/Choaib-ELMADI
+		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
 	"""
 
 	from ultralytics import YOLO

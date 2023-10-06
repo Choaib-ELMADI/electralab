@@ -6,7 +6,7 @@ const transmitterCode = `
 		Radio Transmitter Code
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   github.com/Choaib-ELMADI
+		Give it a star :   https://github.com/Choaib-ELMADI/Arduino-Projects
 	*/
 
 	#include <SPI.h>
@@ -56,7 +56,7 @@ const receiverCode = `
 		Radio Receiver Code
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   github.com/Choaib-ELMADI
+		Give it a star :   https://github.com/Choaib-ELMADI/Arduino-Projects
 	*/
 
 	#include <SPI.h>
