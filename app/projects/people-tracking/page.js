@@ -1,4 +1,4 @@
-import HeaderImage from "@/public/projects/people-tracking/header.png";
+import HeaderImage from "@/public/projects/people-tracking/hheader.png";
 import PorfileImage from "@/public/profile.jpg";
 
 import NavigateToOtherProjects from "@/components/utils/navigate-other-projects";
@@ -10,7 +10,6 @@ import Code from "@/components/utils/code";
 import {
 	Conclusion,
 	DemoWithImage,
-	DemoWithRealTimeVideo,
 	DemoWithVideo,
 	Introduction,
 	SetUpEnvironment,
@@ -25,42 +24,14 @@ const staticImageTestingCode = `
 		Static Image Test
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   github.com/Choaib-ELMADI
-	"""
-
-	from ultralytics import YOLO  
-	import cv2
-
-	model = YOLO(
-		# Path to the YOLO weights if installed. If not, provide the location for installation
-		# Use yolov8n (nano), yolov8m (medium) or yolov8l (large)
-		"yolov8n.pt"
-	)
-
-	results = model(
-		"cars.png", # Path to the image
-		show=True,  # Show the output image
-	)
-
-	# Keep image opened until the user presses a key
-	cv2.waitKey(0)
-
-`;
-const staticVideoTestingCode = `
-	"""
-		Static Video Test
-		by Choaib ELMADI   https://elmadichoaib.vercel.app
-
-		Give it a star :   github.com/Choaib-ELMADI
+		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
 	"""
 
 	from ultralytics import YOLO
-	from sort import *
 	import cvzone
 	import math
 	import cv2
 
-	targetClassNames = ["car", "motorbike", "bus", "truck"]
 	classNames = [
 		"person",
 		"bicycle",
@@ -143,9 +114,155 @@ const staticVideoTestingCode = `
 		"hair drier",
 		"toothbrush",
 	]
-	limits = [360, 297, 673, 297]
-	totalCount = []
-	lineColor = (0, 0, 255)
+
+	cap = cv2.VideoCapture(
+		"people.png" # Path to the image
+	)
+
+	model = YOLO(
+		# Path to the YOLO weights if installed. If not, provide the location for installation
+		# Use yolov8n (nano), yolov8m (medium) or yolov8l (large)
+		"yolov8n.pt"
+	)
+
+	while True:
+		_, img = cap.read()
+		results = model(img, stream=True)
+
+		for r in results:
+			boxes = r.boxes
+			for box in boxes:
+				# GET THE BOUNDING BOX
+				x1, y1, x2, y2 = box.xyxy[0]
+				x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+				w, h = x2 - x1, y2 - y1
+				cvzone.cornerRect(img, (x1, y1, w, h))
+
+				# GET THE CONFIDENCE
+				conf = math.floor(box.conf[0] * 100) / 100
+
+				# GET THE CLASSIFICATION
+				cls = box.cls[0]
+				clsIndex = int(cls)
+				if classNames[clsIndex] == "person": # Track only people
+					cvzone.putTextRect(
+						img,
+						f"{classNames[clsIndex]} {conf}",
+						(max(5, x1), max(35, y1 - 20)),
+						1,
+						1,
+					)
+
+		cv2.imshow("Image", img)
+		cv2.waitKey(0) # Wait for a key press to exit program
+
+`;
+const staticVideoTestingCode = `
+	"""
+		Static Video Test
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
+	"""
+
+	from ultralytics import YOLO
+	from sort import *
+	import cvzone
+	import math
+	import cv2
+
+	targetClassNames = ["person"]
+	classNames = [
+		"person",
+		"bicycle",
+		"car",
+		"motorbike",
+		"aeroplane",
+		"bus",
+		"train",
+		"truck",
+		"boat",
+		"traffic light",
+		"fire hydrant",
+		"stop sign",
+		"parking meter",
+		"bench",
+		"bird",
+		"cat",
+		"dog",
+		"horse",
+		"sheep",
+		"cow",
+		"elephant",
+		"bear",
+		"zebra",
+		"giraffe",
+		"backpack",
+		"umbrella",
+		"handbag",
+		"tie",
+		"suitcase",
+		"frisbee",
+		"skis",
+		"snowboard",
+		"sports ball",
+		"kite",
+		"baseball bat",
+		"baseball glove",
+		"skateboard",
+		"surfboard",
+		"tennis racket",
+		"bottle",
+		"wine glass",
+		"cup",
+		"fork",
+		"knife",
+		"spoon",
+		"bowl",
+		"banana",
+		"apple",
+		"sandwich",
+		"orange",
+		"broccoli",
+		"carrot",
+		"hot dog",
+		"pizza",
+		"donut",
+		"cake",
+		"chair",
+		"sofa",
+		"pottedplant",
+		"bed",
+		"diningtable",
+		"toilet",
+		"tvmonitor",
+		"laptop",
+		"mouse",
+		"remote",
+		"keyboard",
+		"cell phone",
+		"microwave",
+		"oven",
+		"toaster",
+		"sink",
+		"refrigerator",
+		"book",
+		"clock",
+		"vase",
+		"scissors",
+		"teddy bear",
+		"hair drier",
+		"toothbrush",
+	]
+
+	# FOR PEOPLE GOING DOWN
+	limitsDown = [505, 500, 705, 500]
+	totalCountDown = []
+	lineDownColor = (0, 0, 255)
+	# FOR PEOPLE GOING UP
+	limitsUp = [130, 240, 330, 240]
+	totalCountUp = []
+	lineUpColor = (0, 255, 0)
 
 	mask = cv2.imread(
 		# Track only a specific region in the video
@@ -161,13 +278,18 @@ const staticVideoTestingCode = `
 		# Use yolov8n (nano), yolov8m (medium) or yolov8l (large)
 		"yolov8n.pt"
 	)
-	
+
 	# Check this github account for the Sort algorithm: https://github.com/abewley
 	tracker = Sort(max_age=20, min_hits=3, iou_threshold=0.3)
 
 	while True:
 		_, frame = cap.read()
 		frameRegion = cv2.bitwise_and(frame, mask)
+		imgGraphics = cv2.imread(
+			"graphics.png", # Show the Up / Down arrows
+			cv2.IMREAD_UNCHANGED,
+		)
+		frame = cvzone.overlayPNG(frame, imgGraphics, (240, 0))
 		results = model(frameRegion, stream=True)
 
 		detections = np.empty((0, 5))
@@ -187,16 +309,45 @@ const staticVideoTestingCode = `
 					detections = np.vstack((detections, currentArray))
 
 		trackerResults = tracker.update(detections)
-		cv2.line(frame, (limits[0], limits[1]), (limits[2], limits[3]), lineColor, 3)
 
+		# FOR PEOPLE GOING DOWN
+		cv2.line(
+			frame,
+			(limitsDown[0], limitsDown[1]),
+			(limitsDown[2], limitsDown[3]),
+			lineDownColor,
+			3,
+		)
+		# FOR PEOPLE GOING UP
+		cv2.line(
+			frame,
+			(limitsUp[0], limitsUp[1]),
+			(limitsUp[2], limitsUp[3]),
+			lineUpColor,
+			3,
+		)
+
+		# FOR PEOPLE GOING DOWN
 		cvzone.putTextRect(
 			frame,
-			f"Total Count: {len(totalCount)}",
-			(8, 24),
-			1.5,
+			f"{len(totalCountDown)}",
+			(535, 50),
+			2.5,
 			2,
+			(0, 0, 255),
 			(255, 255, 255),
-			(247, 127, 0),
+			cv2.FONT_HERSHEY_PLAIN,
+			5,
+		)
+		# FOR PEOPLE GOING UP
+		cvzone.putTextRect(
+			frame,
+			f"{len(totalCountUp)}",
+			(375, 50),
+			2.5,
+			2,
+			(0, 255, 0),
+			(255, 255, 255),
 			cv2.FONT_HERSHEY_PLAIN,
 			5,
 		)
@@ -210,14 +361,29 @@ const staticVideoTestingCode = `
 			cx, cy = int(x1 + w / 2), int(y1 + h / 2)
 			cv2.circle(frame, (cx, cy), 3, (247, 127, 0), cv2.FILLED)
 
-			if limits[0] <= cx <= limits[2] and limits[1] - 15 <= cy <= limits[1] + 15:
-				if totalCount.count(id) == 0:
-					lineColor = (0, 255, 0)
-					totalCount.append(id)
+			# FOR PEOPLE GOING DOWN
+			if (
+				limitsDown[0] <= cx <= limitsDown[2]
+				and limitsDown[1] - 15 <= cy <= limitsDown[1] + 15
+			):
+				if totalCountDown.count(id) == 0:
+					lineDownColor = (255, 0, 0)
+					totalCountDown.append(id)
 				else:
-					lineColor = (0, 0, 255)
+					lineDownColor = (0, 0, 255)
 
-		cv2.imshow("Cars Counter", frame)
+			# FOR PEOPLE GOING UP
+			if (
+				limitsUp[0] <= cx <= limitsUp[2]
+				and limitsUp[1] - 15 <= cy <= limitsUp[1] + 15
+			):
+				if totalCountUp.count(id) == 0:
+					lineUpColor = (255, 0, 0)
+					totalCountUp.append(id)
+				else:
+					lineUpColor = (0, 255, 0)
+
+		cv2.imshow("People Tracking", frame)
 		cv2.waitKey(1)
 
 `;
@@ -236,8 +402,6 @@ export default function PeopleTracking() {
 			/>
 			<div className="grid grid-cols-1 dm:grid-cols-[auto_300px] gap-1">
 				<div className="overflow-hidden">
-					<h1 className="text-center underline">WE ARE WORKING HERE</h1>
-					{/*
 					<>
 						<Introduction />
 						<SetUpEnvironment id="setup-requirements" />
@@ -259,8 +423,9 @@ export default function PeopleTracking() {
 								id: "static-image-testing",
 								title: "Static Image Testing",
 								description:
-									"Let's begin our exploration by examining the capabilities of our Car Counter system through static image testing.",
-								image: "/projects/cars-counter/cars-counter-static-img.png",
+									"Let's start by looking at what our Escalator People Tracker system can do when we test it with static images.",
+								image:
+									"/projects/people-tracking/people-tracking-static-img.png",
 							}}
 						/>
 						<SimplifiedCode
@@ -277,9 +442,10 @@ export default function PeopleTracking() {
 								id: "video-testing",
 								title: "Video Testing",
 								description:
-									"Let's dive into the dynamic world of our Car Counter system by exploring its accuracy and efficiency through static video testing.",
-								note: "(Video Speed X4 - My PC Is Crying!!! 😂)",
-								video: "/projects/cars-counter/cars-counter-static-video.mp4",
+									"Explore our innovative Escalator Tracker system, delving into its dynamic world to witness its remarkable accuracy and efficiency. Through static video testing, we analyze its seamless ability to track people moving up and down the escalator effortlessly.",
+								note: "Watching the video at Speed X16 - My poor PC is weeping uncontrollably in the corner! 😂.  Someone send it some tissues and a hug!",
+								video:
+									"/projects/people-tracking/people-tracking-static-video.mp4",
 							}}
 						/>
 
@@ -291,39 +457,27 @@ export default function PeopleTracking() {
 						/>
 					</>
 
-					<>
-						<DemoWithRealTimeVideo
-							props={{
-								id: "real-time-video",
-								title: "Real-Time Video",
-								description:
-									"Utilizing real-time video for our Car Counter system is as seamless and precise as working with static video footage. The technology adapts effortlessly, ensuring accurate car counting in both dynamic and stable scenarios.",
-								note: "I didn't test real-time video due to my PC's limitations, but it's a possibility for the future.",
-							}}
-						/>
-						<Conclusion
-							props={{
-								title: "Wrapping Up",
-								descriptions: [
-									"In conclusion, our Car Counter project showcases the power of computer vision technology and its real-world applications in traffic analysis. Through meticulous testing, we have demonstrated the system's reliability in both static images and dynamic video scenarios. By accurately counting cars and understanding traffic patterns, this project opens doors to innovative solutions for urban planning and transportation management.",
-									"As we wrap up this exploration, we invite you to continue this exciting journey with us, exploring the endless possibilities that technology offers in reshaping our cities and enhancing our everyday lives. ",
-									"Thank you for joining us on this adventure, and we look forward to a future where intelligent systems like our Car Counter contribute to smarter, more efficient urban environments.",
-								],
-							}}
-						/>
-					</>
+					<Conclusion
+						props={{
+							title: "Wrapping Up",
+							descriptions: [
+								"In summary, our Escalator Tracker system highlights the effectiveness of computer vision technology in real-life situations, specifically in monitoring people's movement on escalators. Rigorous testing has validated the system's consistency in tracking individuals seamlessly as they ascend and descend. By accurately capturing this data, our project offers valuable insights for various sectors, including retail and public spaces, paving the way for enhanced crowd management and improved user experiences.",
+								"Thank you for being a part of our journey. We're excited about a future where smart systems, like our Escalator Passenger Tracker, make urban spaces more efficient. Your support means the world to us!",
+							],
+						}}
+					/>
 
 					<>
 						<NavigateToOtherProjects
 							props={{
-								prev: "/projects/radio-control",
-								prevTitle: "Radio Control",
+								prev: "/projects/cars-counter",
+								prevTitle: "Cars Counter",
 								next: "/",
 								nextTitle: "Home",
 							}}
 						/>
 						<Support />
-						</>*/}
+					</>
 				</div>
 				<AuthorInfo
 					props={{

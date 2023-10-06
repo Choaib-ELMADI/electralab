@@ -14,7 +14,7 @@ const requirements = [
 			{
 				title: "Webcam (Optional)",
 				description:
-					"If you want to test the object detection system in real-time using a webcam feed, you'll need a compatible webcam.",
+					"If you want to test the object detection system in real-time using a webcam feed, you&rsquo;ll need a compatible webcam.",
 			},
 		],
 	},
@@ -116,48 +116,36 @@ export const Introduction = () => {
 	return (
 		<div>
 			<p className="text-small mb-3">
-				Imagine a smart system that can accurately{" "}
+				Imagine a smart system that{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					count cars on the road
-				</span>
-				, helping us understand traffic patterns and optimize our journeys. This
-				project has been a labor of love, combining my passion for technology
-				with the fascination for real-world problem-solving. On this website,
-				I&rsquo;ll take you on a journey behind the scenes, showing you how I
-				created this intelligent car counting system from scratch.
+					tracks people
+				</span>{" "}
+				on escalators with precision, enhancing safety and efficiency in public
+				spaces. This project reflects my passion for technology and
+				problem-solving. Join me on a journey to explore how I created this
+				intelligent escalator tracking system from scratch.
 			</p>
 			<p className="text-small mb-3">
-				Have you ever wondered how traffic engineers gather data about vehicles
-				on the road?{" "}
+				Ever wondered how engineers track people on escalators?{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					My Car Counter Project
+					My Escalator Tracking System
 				</span>{" "}
-				answers this question by utilizing object detection, a technology that
-				enables computers to &rdquo;see&rdquo; and recognize objects in images
-				or videos.{" "}
-				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					Using Python and the YOLO model
-				</span>
-				, I built a smart system that can detect and count cars in real-time.
-				This project not only showcases the capabilities of modern computer
-				vision but also demonstrates its practical applications in the real
-				world. Whether you&rsquo;re a tech enthusiast, a budding developer, or
-				just curious about how AI can enhance our daily lives, this project
-				offers valuable insights into the intersection of technology and
-				transportation.
+				does just that using object detection technology. Using Python and the
+				YOLO model, I created a smart system that can count people on escalators
+				in real-time. This project showcases the practical applications of
+				computer vision, offering valuable insights for tech enthusiasts and
+				curious minds alike.
 			</p>
 			<p className="text-small">
-				In this digital space, I&rsquo;ll guide you through the entire process
-				of creating{" "}
+				Welcome to our digital space, where I&rsquo;ll walk you through creating
+				the{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					the Car Counter Project
+					Escalator Tracker System
 				</span>
-				. I&rsquo;ll share my step-by-step experiences. You&rsquo;ll gain access
-				to the code snippets. Whether you&rsquo;re a beginner eager to learn or
-				an experienced developer seeking inspiration, this platform is designed
-				to inspire, educate, and empower. Join me in unraveling the mysteries of
-				computer vision and discover the innovative world of intelligent car
-				counting!
+				. I&rsquo;ll share my step-by-step experiences and provide code
+				snippets. Whether you&rsquo;re a beginner or an experienced developer,
+				this platform is designed to inspire and educate. Join me in exploring
+				the world of intelligent human tracking technology!
 			</p>
 		</div>
 	);
@@ -252,31 +240,9 @@ export const DemoWithVideo = ({
 			<p className="text-small mb-3">
 				{description} <span className="text-red font-semibold">{note}</span>
 			</p>
-			<video loop muted controls className="w-full rounded-sm">
+			<video loop muted controls className="w-full rounded-sm max-h-[600px]">
 				<source src={video} />
 			</video>
-		</div>
-	);
-};
-
-export const DemoWithRealTimeVideo = ({
-	props: { id, title, description, note },
-}) => {
-	return (
-		<div id={id} className="mt-8">
-			<Link
-				href={`#${id}`}
-				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
-			>
-				{title}{" "}
-				<LinkIcon
-					size={20}
-					className="inline text-secondary group-hover:text-purple transition-all"
-				/>
-			</Link>
-			<p className="text-small">
-				{description} <span className="text-red font-semibold">{note}</span>
-			</p>
 		</div>
 	);
 };
@@ -286,8 +252,7 @@ export const Conclusion = ({ props: { title, descriptions } }) => {
 		<div className="mt-8">
 			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
 			<p className="text-small mb-3">{descriptions[0]}</p>
-			<p className="text-small mb-3">{descriptions[1]}</p>
-			<p className="text-small">{descriptions[2]}</p>
+			<p className="text-small">{descriptions[1]}</p>
 		</div>
 	);
 };
