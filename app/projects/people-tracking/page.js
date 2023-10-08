@@ -472,8 +472,8 @@ export default function PeopleTracking() {
 							props={{
 								prev: "/projects/cars-counter",
 								prevTitle: "Cars Counter",
-								next: "/",
-								nextTitle: "Home",
+								next: "/projects/poker-card-game",
+								nextTitle: "Poker Card Game",
 							}}
 						/>
 						<Support />
