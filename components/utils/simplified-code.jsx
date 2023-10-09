@@ -41,7 +41,7 @@ const SimplifiedCode = ({ props: { githubLink, code } }) => {
 					<Copy size={16} /> {copied ? "Copied" : "Copy"}
 				</button>
 			</div>
-			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-3">
+			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-1">
 				<pre className="text-small">{code}</pre>
 			</div>
 		</div>
