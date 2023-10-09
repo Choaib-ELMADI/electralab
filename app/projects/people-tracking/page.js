@@ -410,7 +410,7 @@ export default function PeopleTracking() {
 								id: "install-py-packages",
 								title: "Install Python Libraries",
 								description:
-									"Ensure that you have these libraries installed in your Python environment before running the Car Counter project code. You can use the following command to install these libraries using pip:",
+									"Ensure that you have these libraries installed in your Python environment before running the People Tracking project code. You can use the following command to install these libraries using pip:",
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: installPyPackages,
 							}}
