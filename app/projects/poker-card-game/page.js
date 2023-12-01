@@ -550,8 +550,8 @@ export default function PokerCardGame() {
 							props={{
 								prev: "/projects/people-tracking",
 								prevTitle: "People Tracking",
-								next: "/",
-								nextTitle: "Home",
+								next: "/projects/mini-balance-robot",
+								nextTitle: "Mini Balance Robot",
 							}}
 						/>
 						<Support />
