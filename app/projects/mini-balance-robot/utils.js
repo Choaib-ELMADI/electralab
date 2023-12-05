@@ -2,11 +2,67 @@ import { LinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const requirements = [
+	{
+		type: "Hardware",
+		items: [
+			{
+				title: "Arduino Board",
+				description:
+					"Required for controlling the robot's actuators and sensors.",
+			},
+			{
+				title: "MPU6050 Module",
+				description: "For measuring acceleration and gyroscopic data.",
+			},
+		],
+	},
+	{
+		type: "Development Environment",
+		items: [
+			{
+				title: "IDE",
+				description: "Arduino IDE for programming the Arduino board.",
+			},
+		],
+	},
+	{
+		type: "Additional Components",
+		items: [
+			{
+				title: "Motor Driver",
+				description: "To control the motors for balance adjustments.",
+			},
+			{
+				title: "Power Supply",
+				description: "Sufficient power supply for the components.",
+			},
+		],
+	},
+	{
+		type: "Arduino Libraries",
+		items: [
+			{
+				title: "PID_v1.h",
+				description: "Library for PID control.",
+			},
+			{
+				title: "I2Cdev.h",
+				description: "Library for I2C communication with devices.",
+			},
+			{
+				title: "MPU6050_6Axis_MotionApps20.h",
+				description: "Library for MPU6050 motion apps.",
+			},
+		],
+	},
+];
+
 export const Introduction = () => {
 	return (
 		<div>
 			<p className="text-small mb-3">
-				Come along on a journey through my adventure in building a cool{" "}
+				Join me on an exciting journey as I build a fantastic{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
 					self-balancing robot
 				</span>{" "}
@@ -17,23 +73,26 @@ export const Introduction = () => {
 				and an{" "}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
 					MPU6050 module
+				</span>{" "}
+				. This site is your gateway to discovering how I assembled this cool
+				robot, step by step.
+			</p>
+			<p className="text-small mb-3">
+				I&rsquo;ll walk you through using basic components like the Arduino
+				board and MPU6050 sensor to create its balancing abilities. I&rsquo;ll
+				explain everything in an easy-to-understand manner.
+			</p>
+			<p className="text-small mb-3">
+				We&rsquo;ll delve into using{" "}
+				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
+					PID control
 				</span>
-				. This website is your ticket to seeing how I put together this fun
-				little robot, step by step.
-			</p>
-			<p className="text-small mb-3">
-				I&rsquo;ll show you how I used basic components like the Arduino board
-				and the MPU6050 sensor to create something that can balance itself.
-				I&rsquo;ll explain things in a simple way, so you can understand how I
-				made it all work.
-			</p>
-			<p className="text-small mb-3">
-				We&rsquo;ll explore how I taught the robot to balance using clever
-				tricks with code and electronics. It&rsquo;s a mix of science and
-				creativity that&rsquo;s both fun and fascinating!
+				, clever coding, and electronics to teach the robot how to balance
+				itself. It&rsquo;s a delightful blend of science and creativity
+				that&rsquo;s both enjoyable and intriguing!
 			</p>
 			<p className="text-small">
-				Let&rsquo;s dive in and discover the magic behind this awesome mini
+				Let&rsquo;s jump in and uncover the magic behind this amazing mini
 				balance robot together!
 			</p>
 		</div>
@@ -63,6 +122,53 @@ export const Steps = () => {
 					</li>
 				</ol>
 			</div>
+		</div>
+	);
+};
+
+export const SetUpEnvironment = ({ id }) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				Essential Requirements for the Project{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">
+				Before jumping into the world of building your self-balancing robot,
+				it&rsquo;s crucial to have the right tools ready. To start this exciting
+				project, make sure you&rsquo;ve got all the hardware and software you
+				need. Here&rsquo;s a curated list of essentials, carefully put together
+				to make your experience in robotics smooth and enjoyable.
+			</p>
+			<div className="flex flex-col gap-4">
+				{requirements.map(({ type, items }) => (
+					<div key={type}>
+						<p className="bg-gradient-to-r from-green to-purple bg-clip-text text-transparent font-semibold w-max">
+							{type}:
+						</p>
+						<ul className="ml-6 flex flex-col gap-2">
+							{items.map(({ title, description }) => (
+								<li key={title} className="">
+									<p className="text-small">
+										<span className="text-text font-semibold">{title}:</span>{" "}
+										<span className="text-secondary">{description}</span>
+									</p>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+			<p className="text-small mt-3">
+				For your convenience, I&rsquo;ll supply direct links to access all the
+				necessary libraries.
+			</p>
 		</div>
 	);
 };
@@ -119,6 +225,79 @@ export const RobotModeling = ({
 						/>
 					</Link>
 				))}
+			</div>
+			<p className="text-small mt-3">
+				You can find the 3D models available for printing on{" "}
+				<Link
+					className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold"
+					target="_blank"
+					href="https://thangs.com/designer/Choaib%20ELMADI"
+				>
+					my Thangs profile
+				</Link>
+				.
+			</p>
+		</div>
+	);
+};
+
+export const CircuitDiagram = ({
+	props: { id, title, description, images },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				{title}{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">{description}</p>
+			<div className="relative">
+				<Image
+					src={images[1]}
+					width={900}
+					height={400}
+					draggable="false"
+					alt={title}
+					priority={true}
+					className="w-full rounded-sm"
+				/>
+				<span className="hidden md:block absolute top-4 left-4 z-[1] bg-purple px-2 py-1 rounded-sm text-white dark:text-text text-small">
+					MPU-6050 Wiring
+				</span>
+			</div>
+			<div className="relative mt-3">
+				<Image
+					src={images[2]}
+					width={900}
+					height={400}
+					draggable="false"
+					alt={title}
+					priority={true}
+					className="w-full rounded-sm"
+				/>
+				<span className="hidden md:block absolute top-4 left-4 z-[1] bg-purple px-2 py-1 rounded-sm text-white dark:text-text text-small">
+					Motors Wiring
+				</span>
+			</div>
+			<div className="relative mt-3">
+				<Image
+					src={images[0]}
+					width={900}
+					height={400}
+					draggable="false"
+					alt={title}
+					priority={true}
+					className="w-full rounded-sm"
+				/>
+				<span className="hidden md:block absolute top-4 left-4 z-[1] bg-purple px-2 py-1 rounded-sm text-white dark:text-text text-small">
+					Full Wiring
+				</span>
 			</div>
 		</div>
 	);
