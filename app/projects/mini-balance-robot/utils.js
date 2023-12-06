@@ -127,10 +127,10 @@ export const Steps = () => {
 						<Link href="#project-circuit">Arduino Circuit Diagram</Link>
 					</li>
 					<li className="text-tiny text-secondary hover:text-text transition-all w-max">
-						<Link href="#solder-electronics">Soldering & Electronics</Link>
+						<Link href="#parts-assembly">Soldering & Electronics</Link>
 					</li>
 					<li className="text-tiny text-secondary hover:text-text transition-all w-max">
-						<Link href="#project-code">Arduino Code</Link>
+						<Link href="#mpu6050-calibration">Arduino Code</Link>
 					</li>
 				</ol>
 			</div>
@@ -352,6 +352,43 @@ export const AssembleParts = ({
 				alt={`${title}`}
 				className="w-full aspect-[1/.6] rounded-sm object-cover"
 			/>
+		</div>
+	);
+};
+
+export const VideoDemonstration = ({
+	props: { id, title, description, video },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				{title}{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">{description}</p>
+			<div className="w-full h-auto max-h-[400px] flex justify-center">
+				<video controls muted autoPlay className="w-full muted-video">
+					<source src={video} />
+				</video>
+			</div>
+		</div>
+	);
+};
+
+export const Conclusion = ({ props: { title, descriptions } }) => {
+	return (
+		<div className="mt-8">
+			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
+			<p className="text-small">{descriptions[0]}</p>
+			<p className="text-medium mb-3 bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold w-max">
+				{descriptions[1]}
+			</p>
 		</div>
 	);
 };

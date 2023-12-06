@@ -82,3 +82,11 @@
 * {
   scroll-behavior: smooth;
 }
+
+.muted-video::-webkit-media-controls-volume-slider {
+  display: none;
+}
+
+.muted-video::-webkit-media-controls-mute-button {
+  display: none;
+}
