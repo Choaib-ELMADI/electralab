@@ -247,6 +247,7 @@ export default function CarsCounter() {
 									"Ensure that you have these libraries installed in your Python environment before running the Car Counter project code. You can use the following command to install these libraries using pip:",
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: installPyPackages,
+								language: "python",
 							}}
 						/>
 					</>
@@ -265,6 +266,7 @@ export default function CarsCounter() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticImageTestingCode,
+								language: "python",
 							}}
 						/>
 					</>
@@ -285,6 +287,7 @@ export default function CarsCounter() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticVideoTestingCode,
+								language: "python",
 							}}
 						/>
 					</>

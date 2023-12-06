@@ -199,6 +199,7 @@ export default function RadioControl() {
 									"NB: The address for both the receiver and the transmitter must be the same.",
 								githubLink: "https://github.com/Choaib-ELMADI",
 								code: transmitterCode,
+								language: "arduino",
 							}}
 						/>
 						<Code
@@ -209,6 +210,7 @@ export default function RadioControl() {
 									"NB: The address for both the receiver and the transmitter must be the same.",
 								githubLink: "https://github.com/Choaib-ELMADI",
 								code: receiverCode,
+								language: "arduino",
 							}}
 						/>
 					</>

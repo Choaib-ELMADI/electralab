@@ -464,6 +464,7 @@ export default function PokerCardGame() {
 									"Ensure that you have these libraries installed in your Python environment before running the Poker Hand Detector code. You can use the following command to install these libraries using pip:",
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: installPyPackages,
+								language: "python",
 							}}
 						/>
 					</>
@@ -482,6 +483,7 @@ export default function PokerCardGame() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticImageTestingCode,
+								language: "python",
 							}}
 						/>
 						<DownloadWeights link="/yolo-weights/playing-cards.pt" />
@@ -503,6 +505,7 @@ export default function PokerCardGame() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticVideoTestingCode,
+								language: "python",
 							}}
 						/>
 						<DownloadWeights link="/yolo-weights/playing-cards.pt" />
@@ -524,6 +527,7 @@ export default function PokerCardGame() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: pokerHandDetector,
+								language: "python",
 							}}
 						/>
 						<DownloadWeights link="/yolo-weights/playing-cards.pt" />
@@ -531,6 +535,7 @@ export default function PokerCardGame() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: findPokerHand,
+								language: "python",
 							}}
 						/>
 					</>

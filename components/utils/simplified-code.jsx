@@ -1,10 +1,13 @@
 "use client";
 
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+
 import { Copy, Github } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
-const SimplifiedCode = ({ props: { githubLink, code } }) => {
+const SimplifiedCode = ({ props: { githubLink, code, language } }) => {
 	const [copied, setCopied] = useState(false);
 
 	const handleCopy = async () => {
@@ -41,8 +44,14 @@ const SimplifiedCode = ({ props: { githubLink, code } }) => {
 					<Copy size={16} /> {copied ? "Copied" : "Copy"}
 				</button>
 			</div>
-			<div className="bg-hovery border border-hovery backdrop-blur-lg rounded-sm w-full h-auto max-h-[300px] overflow-auto custom-scrollbar mt-1">
-				<pre className="text-small">{code}</pre>
+			<div className="w-full h-auto max-h-[300px] overflow-auto hide-scrollbar mt-1">
+				<SyntaxHighlighter
+					className="custom-scrollbar"
+					language={language}
+					style={dracula}
+				>
+					{code}
+				</SyntaxHighlighter>
 			</div>
 		</div>
 	);

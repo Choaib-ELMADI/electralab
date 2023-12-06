@@ -376,6 +376,7 @@ export default function MiniBalanceRobot() {
 									"This section focuses on the calibration process for the MPU-6050 sensor. Proper calibration ensures accurate readings of acceleration and gyroscopic data, laying the groundwork for precise motion tracking in the self-balancing robot. Follow these steps to calibrate the MPU-6050 sensor for optimal performance.",
 								githubLink: "https://github.com/Choaib-ELMADI",
 								code: mpu6050CalibrationCode,
+								language: "arduino",
 							}}
 						/>
 						<p className="text-small mt-3">
@@ -398,6 +399,7 @@ export default function MiniBalanceRobot() {
 									"This section delves into the core of our project, presenting the code responsible for controlling the motors of the self-balancing robot. Through this code, we orchestrate the intricate balance adjustments and movements crucial for the robot's stability and functionality. Follow along to understand how the motors are controlled to maintain the robot's balance.",
 								githubLink: "https://github.com/Choaib-ELMADI",
 								code: mainCodeImplementation,
+								language: "arduino",
 							}}
 						/>
 					</>

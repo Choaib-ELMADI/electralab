@@ -413,6 +413,7 @@ export default function PeopleTracking() {
 									"Ensure that you have these libraries installed in your Python environment before running the People Tracking project code. You can use the following command to install these libraries using pip:",
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: installPyPackages,
+								language: "python",
 							}}
 						/>
 					</>
@@ -432,6 +433,7 @@ export default function PeopleTracking() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticImageTestingCode,
+								language: "python",
 							}}
 						/>
 					</>
@@ -453,6 +455,7 @@ export default function PeopleTracking() {
 							props={{
 								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
 								code: staticVideoTestingCode,
+								language: "python",
 							}}
 						/>
 					</>
