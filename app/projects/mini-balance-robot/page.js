@@ -418,7 +418,7 @@ export default function MiniBalanceRobot() {
 								fine-tune the PID constants
 							</span>{" "}
 							to achieve improved results. Adjusting these constants allows for
-							optimization and fine-tuning of the robot's balance and
+							optimization and fine-tuning of the robot&rsquo;s balance and
 							performance. Experiment with different values to enhance the
 							stability and responsiveness of your self-balancing robot.
 						</p>
