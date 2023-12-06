@@ -323,7 +323,7 @@ export const AssembleParts = ({
 				/>
 			</Link>
 			<p className="text-small mb-3">{description}</p>
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+			<div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-2 mb-2">
 				{images.map((image, i) => (
 					<Link
 						target="_blank"

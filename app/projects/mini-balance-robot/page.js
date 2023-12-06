@@ -77,7 +77,6 @@ export default function MiniBalanceRobot() {
 									"/projects/mini-balance-robot/assembly-img-1.jpg",
 									"/projects/mini-balance-robot/assembly-img-2.jpg",
 									"/projects/mini-balance-robot/assembly-img-3.jpg",
-									"/projects/mini-balance-robot/assembly-img-4.jpg",
 								],
 								mainImage:
 									"/projects/mini-balance-robot/assembly-main-image.jpg",
