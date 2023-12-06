@@ -338,7 +338,7 @@ export const AssembleParts = ({
 							alt={`${title} - ${i}`}
 							className="w-full aspect-[1/.8] md:aspect-[1/1.1] rounded-sm object-cover"
 						/>
-						<span className="absolute left-3 bottom-3 p-1 bg-purple text-background dark:text-text rounded-full text-small">
+						<span className="absolute left-3 top-3 p-1 bg-purple text-background dark:text-text rounded-full text-normal">
 							{i + 1}
 						</span>
 					</Link>
