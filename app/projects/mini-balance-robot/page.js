@@ -42,9 +42,9 @@ export default function MiniBalanceRobot() {
 								description:
 									"Let's begin by giving shape to our mini balance robot in the digital world! I've created 3D models that represent every part of our robot. These models are like digital maps showing how each piece fits together. Click the links below to download and see these models. They're the starting point of our project, showing us how our robot will look and how its parts connect.",
 								images: [
-									"/projects/mini-balance-robot/header.png",
-									"/projects/mini-balance-robot/header.png",
-									"/projects/mini-balance-robot/header.png",
+									"/projects/mini-balance-robot/3d-model-1.png",
+									"/projects/mini-balance-robot/3d-model-2.png",
+									"/projects/mini-balance-robot/3d-model-3.png",
 								],
 							}}
 						/>

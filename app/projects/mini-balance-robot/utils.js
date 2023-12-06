@@ -223,7 +223,6 @@ export const RobotModeling = ({
 				{images.map((image, i) => (
 					<Link
 						key={`image-${i}`}
-						className="sm:max-h-[200px]"
 						href="https://thangs.com/designer/Choaib%20ELMADI"
 						target="_blank"
 					>
