@@ -386,7 +386,7 @@ export const Conclusion = ({ props: { title, descriptions } }) => {
 		<div className="mt-8">
 			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
 			<p className="text-small">{descriptions[0]}</p>
-			<p className="text-medium mb-3 bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold w-max">
+			<p className="text-medium mb-3 bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
 				{descriptions[1]}
 			</p>
 		</div>
