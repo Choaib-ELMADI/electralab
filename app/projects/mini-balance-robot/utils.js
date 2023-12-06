@@ -15,6 +15,18 @@ const requirements = [
 				title: "MPU6050 Module",
 				description: "For measuring acceleration and gyroscopic data.",
 			},
+			{
+				title: "DC Motors",
+				description: "For driving the robot's movement.",
+			},
+			{
+				title: "Wheels",
+				description: "To facilitate the robot's mobility.",
+			},
+			{
+				title: "Jumper Wires",
+				description: "For connecting various components.",
+			},
 		],
 	},
 	{
@@ -291,6 +303,56 @@ export const CircuitDiagram = ({
 					Full Wiring
 				</span>
 			</div>
+		</div>
+	);
+};
+
+export const AssembleParts = ({
+	props: { id, title, description, images, mainImage },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				{title}{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">{description}</p>
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+				{images.map((image, i) => (
+					<Link
+						target="_blank"
+						href="https://thangs.com/designer/Choaib%20ELMADI"
+						key={`image-${i}`}
+						className="relative"
+					>
+						<Image
+							src={image}
+							width={400}
+							height={600}
+							draggable="false"
+							alt={`${title} - ${i}`}
+							className="w-full aspect-[1/.8] md:aspect-[1/1.1] rounded-sm object-cover"
+						/>
+						<span className="absolute left-3 bottom-3 p-1 bg-purple text-background dark:text-text rounded-full text-small">
+							{i + 1}
+						</span>
+					</Link>
+				))}
+			</div>
+			<Image
+				src={mainImage}
+				width={900}
+				height={400}
+				draggable="false"
+				alt={`${title}`}
+				className="w-full aspect-[1/.6] rounded-sm object-cover"
+			/>
 		</div>
 	);
 };

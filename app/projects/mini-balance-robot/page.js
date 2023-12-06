@@ -2,6 +2,7 @@ import HeaderImage from "@/public/projects/mini-balance-robot/header.png";
 import PorfileImage from "@/public/profile.jpg";
 
 import {
+	AssembleParts,
 	CircuitDiagram,
 	Introduction,
 	RobotModeling,
@@ -49,19 +50,40 @@ export default function MiniBalanceRobot() {
 						/>
 					</>
 
-					<CircuitDiagram
-						props={{
-							id: "project-circuit",
-							title: "Schematic Overview",
-							description:
-								"Understanding the schematic is pivotal in comprehending the intricate workings of our project. This section provides a detailed overview of the circuitry and connections, unraveling the blueprint behind the magic of our creation.",
-							images: [
-								"/projects/mini-balance-robot/mbr-circuit.png",
-								"/projects/mini-balance-robot/mpu6050-wiring.png",
-								"/projects/mini-balance-robot/motors-wiring.png",
-							],
-						}}
-					/>
+					<>
+						<CircuitDiagram
+							props={{
+								id: "project-circuit",
+								title: "Schematic Overview",
+								description:
+									"Understanding the schematic is pivotal in comprehending the intricate workings of our project. This section provides a detailed overview of the circuitry and connections, unraveling the blueprint behind the magic of our creation.",
+								images: [
+									"/projects/mini-balance-robot/mbr-circuit.png",
+									"/projects/mini-balance-robot/mpu6050-wiring.png",
+									"/projects/mini-balance-robot/motors-wiring.png",
+								],
+							}}
+						/>
+					</>
+
+					<>
+						<AssembleParts
+							props={{
+								id: "parts-assembly",
+								title: "Assembly of Printed Parts",
+								description:
+									"This section covers the step-by-step process of assembling the 3D-printed components necessary for constructing the self-balancing robot. Follow these instructions to seamlessly piece together the printed parts, ensuring a sturdy and functional foundation for the robot's structure.",
+								images: [
+									"/projects/mini-balance-robot/assembly-img-1.jpg",
+									"/projects/mini-balance-robot/assembly-img-2.jpg",
+									"/projects/mini-balance-robot/assembly-img-3.jpg",
+									"/projects/mini-balance-robot/assembly-img-4.jpg",
+								],
+								mainImage:
+									"/projects/mini-balance-robot/assembly-main-image.jpg",
+							}}
+						/>
+					</>
 
 					<>
 						<NavigateToOtherProjects
