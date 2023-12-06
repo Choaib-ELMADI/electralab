@@ -257,7 +257,7 @@ export const CircuitDiagram = ({
 				/>
 			</Link>
 			<p className="text-small mb-3">{description}</p>
-			<div className="relative">
+			<div className="grid grid-cols-1 md:grid-cols-2 mb-2 gap-2">
 				<Image
 					src={images[1]}
 					width={900}
@@ -267,11 +267,6 @@ export const CircuitDiagram = ({
 					priority={true}
 					className="w-full rounded-sm"
 				/>
-				<span className="hidden md:block absolute top-4 left-4 z-[1] bg-purple px-2 py-1 rounded-sm text-white dark:text-text text-small">
-					MPU-6050 Wiring
-				</span>
-			</div>
-			<div className="relative mt-3">
 				<Image
 					src={images[2]}
 					width={900}
@@ -281,11 +276,8 @@ export const CircuitDiagram = ({
 					priority={true}
 					className="w-full rounded-sm"
 				/>
-				<span className="hidden md:block absolute top-4 left-4 z-[1] bg-purple px-2 py-1 rounded-sm text-white dark:text-text text-small">
-					Motors Wiring
-				</span>
 			</div>
-			<div className="relative mt-3">
+			<div className="relative">
 				<Image
 					src={images[0]}
 					width={900}
