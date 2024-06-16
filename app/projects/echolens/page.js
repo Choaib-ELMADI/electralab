@@ -251,7 +251,13 @@ export default function EchoLensPage() {
 								title: "Frame Design and 3D Printing",
 								description:
 									"In this step, we design the EchoLens frame using Solidworks to fit the ESP32-CAM, battery, and other essential components. After crafting a detailed 3D model, we optimize the design for 3D printing, selecting suitable materials and print settings to ensure durability and functionality. Finally, we print the frame, creating the physical structure needed for assembling the EchoLens smart glasses.",
-								images: ["", "", ""],
+								images: [
+									"/projects/echolens/77.jpg",
+									"/projects/echolens/15.jpg",
+									"/projects/echolens/17.jpg",
+									"/projects/echolens/12.jpg",
+									"/projects/echolens/88.jpg",
+								],
 								conclusion:
 									"You can download all the 3D designs from our Thangs profile or GitHub repository for your convenience.",
 							}}
