@@ -122,7 +122,7 @@ export const DesignStep = ({
 	);
 };
 
-const RedirectLink = ({ link, text, index }) => {
+export const RedirectLink = ({ link, text, index }) => {
 	return (
 		<Link
 			href={link}
@@ -1392,6 +1392,18 @@ export const Testing = ({ props: { id, title, description } }) => {
 			<video controls autoPlay={false} className="w-full rounded-sm">
 				<source src="/projects/echolens/demo.mp4" />
 			</video>
+		</div>
+	);
+};
+
+export const Conclusion = ({ props: { title, descriptions } }) => {
+	return (
+		<div className="mt-8">
+			<h1 className="text-medium mb-2 font-[500]">{title}</h1>
+			<p className="text-small">{descriptions[0]}</p>
+			<p className="text-medium mb-3 bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold w-full max-w-max">
+				{descriptions[1]}
+			</p>
 		</div>
 	);
 };

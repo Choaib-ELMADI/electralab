@@ -11,11 +11,12 @@ import {
 	AIModel,
 	DesignStep,
 	Integration,
-	// Conclusion,
+	Conclusion,
 	Introduction,
 	Steps,
 	Testing,
 	WebInterfaceSetup,
+	RedirectLink,
 } from "./utils";
 
 const mainCppCode = `
@@ -517,6 +518,10 @@ export default function EchoLensPage() {
 								language: "python",
 							}}
 						/>
+						<RedirectLink
+							link="https://github.com/Choaib-ELMADI/echolens/tree/main/Programs/Main"
+							text="More Details Here"
+						/>
 					</>
 
 					<>
@@ -526,6 +531,18 @@ export default function EchoLensPage() {
 								title: "Testing",
 								description:
 									"After integrating these elements, we conduct extensive testing to verify that the speech-to-text and sign language translation features work accurately and smoothly. This process includes debugging, performance optimization, and validating the interaction between hardware and software.",
+							}}
+						/>
+					</>
+
+					<>
+						<Conclusion
+							props={{
+								title: "Conclusion",
+								descriptions: [
+									"Congratulations on completing the EchoLens project! We've successfully designed, assembled, and tested smart glasses that enhance communication for the deaf and mute. Use this experience to keep exploring and innovating in assistive technology.",
+									"Keep exploring, learning, and creating!",
+								],
 							}}
 						/>
 					</>
