@@ -9,7 +9,7 @@ import Header from "@/components/utils/header";
 import Code from "@/components/utils/code";
 
 import {
-	FrameDesign,
+	DesignStep,
 	// Conclusion,
 	// DemoWithImage,
 	// DemoWithRealTimeVideo,
@@ -245,21 +245,53 @@ export default function EchoLensPage() {
 					</>
 
 					<>
-						<FrameDesign
+						<DesignStep
 							props={{
 								id: "frame-design-3d-print",
 								title: "Frame Design and 3D Printing",
 								description:
 									"In this step, we design the EchoLens frame using Solidworks to fit the ESP32-CAM, battery, and other essential components. After crafting a detailed 3D model, we optimize the design for 3D printing, selecting suitable materials and print settings to ensure durability and functionality. Finally, we print the frame, creating the physical structure needed for assembling the EchoLens smart glasses.",
 								images: [
-									"/projects/echolens/77.jpg",
-									"/projects/echolens/15.jpg",
-									"/projects/echolens/17.jpg",
-									"/projects/echolens/12.jpg",
-									"/projects/echolens/88.jpg",
+									"/projects/echolens/1.jpg",
+									"/projects/echolens/2.jpg",
+									"/projects/echolens/3.jpg",
+									"/projects/echolens/4.jpg",
+									"/projects/echolens/5.jpg",
 								],
 								conclusion:
 									"You can download all the 3D designs from our Thangs profile or GitHub repository for your convenience.",
+								links: [
+									{
+										link: "https://github.com/Choaib-ELMADI/echolens/tree/main/3D%20Models",
+										text: "Github - 3D Models",
+									},
+									{
+										link: "https://thangs.com/designer/Choaib%20ELMADI",
+										text: "Thangs Profile",
+									},
+								],
+							}}
+						/>
+
+						<DesignStep
+							props={{
+								id: "pcb-development",
+								title: "PCB Development",
+								description:
+									"In this step, we design a custom PCB layout using Altium Designer to integrate all the electronic components required for EchoLens. Once the design is finalized, we send the PCB layout to a fabrication service like PCBway to produce the physical board. After receiving the fabricated PCB, we proceed with soldering and assembling the electronic components onto the board, ensuring all connections are secure and functional.",
+								images: [
+									"/projects/echolens/11.jpg",
+									"/projects/echolens/12.jpg",
+									"/projects/echolens/13.jpg",
+								],
+								conclusion:
+									"All PCB design files, including Gerber files, are available for download from our GitHub repository.",
+								links: [
+									{
+										link: "https://github.com/Choaib-ELMADI/echolens/tree/main/Circuit%20Diagram/ESP32-CAM%20PCB%20Shield",
+										text: "Github - Gerber Files",
+									},
+								],
 							}}
 						/>
 					</>

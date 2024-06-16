@@ -77,8 +77,8 @@ export const Steps = () => {
 	);
 };
 
-export const FrameDesign = ({
-	props: { id, title, description, images, conclusion },
+export const DesignStep = ({
+	props: { id, title, description, images, conclusion, links },
 }) => {
 	return (
 		<div id={id} className="mt-8">
@@ -95,7 +95,12 @@ export const FrameDesign = ({
 			<p className="text-small mb-3">{description}</p>
 			<div className="grid grid-cols-1 sm:grid-cols-2 mn:grid-cols-3 gap-2">
 				{images.map((image, i) => (
-					<div key={`image-${i}`} className="sm:max-h-[300px] last:col-span-2">
+					<div
+						key={`image-${i}`}
+						className={`sm:max-h-[300px] ${
+							images.length > 3 && "last:col-span-2"
+						}`}
+					>
 						<Image
 							src={image}
 							width={400}
@@ -108,24 +113,20 @@ export const FrameDesign = ({
 				))}
 			</div>
 			<p className="text-small mt-2">{conclusion}</p>
-			<RedirectLink
-				link="https://github.com/Choaib-ELMADI/echolens/tree/main/3D%20Models"
-				text="Github - 3D Models"
-			/>
-			<RedirectLink
-				link="https://thangs.com/designer/Choaib%20ELMADI"
-				text="Thangs Profile"
-			/>
+			{links.map(({ link, text }, index) => (
+				<RedirectLink link={link} text={text} index={`link-${index}`} />
+			))}
 		</div>
 	);
 };
 
-const RedirectLink = ({ link, text }) => {
+const RedirectLink = ({ link, text, index }) => {
 	return (
 		<Link
 			href={link}
 			target="_blank"
 			className="block w-full rounded-sm px-1 py-3 text-center text-small mt-2 bg-gradient-to-r from-pink to-purple text-background dark:text-text hover:underline"
+			key={index}
 		>
 			{text}
 		</Link>
