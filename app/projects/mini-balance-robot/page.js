@@ -454,7 +454,7 @@ export default function MiniBalanceRobot() {
 					props={{
 						profile: PorfileImage,
 						description:
-							"I'm a junior full-stack developer with 2+ years of experience in web technologies like HTML, CSS, JavaScript, React.js, Next.js, Node.js, Express, and databases like MongoDB and Firebase. I'm also an electronics engineering student who loves creating robots with Arduino and Raspberry Pi.",
+							"I'm an embedded systems engineering student. I am currently pursuing a degree in Embedded Systems and Systems Control Engineering, where I engage in practical work involving robotics, electronics, and programming with platforms like Arduino and Raspberry Pi.",
 						name: "Choaib ELMADI",
 						link: "https://elmadichoaib.vercel.app",
 					}}
