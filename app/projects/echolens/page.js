@@ -9,11 +9,13 @@ import Header from "@/components/utils/header";
 import Code from "@/components/utils/code";
 
 import {
+	FrameDesign,
 	// Conclusion,
 	// DemoWithImage,
 	// DemoWithRealTimeVideo,
 	// DemoWithVideo,
 	Introduction,
+	Steps,
 	// SetUpEnvironment,
 } from "./utils";
 
@@ -239,18 +241,21 @@ export default function EchoLensPage() {
 				<div className="overflow-hidden">
 					<>
 						<Introduction />
-						{/* <SetUpEnvironment id="setup-requirements" /> */}
-						{/* <Code
+						<Steps />
+					</>
+
+					<>
+						<FrameDesign
 							props={{
-								id: "install-py-packages",
-								title: "Install Python Libraries",
+								id: "frame-design-3d-print",
+								title: "Frame Design and 3D Printing",
 								description:
-									"Ensure that you have these libraries installed in your Python environment before running the Car Counter project code. You can use the following command to install these libraries using pip:",
-								githubLink: "https://github.com/Choaib-ELMADI/Computer-Vision",
-								code: installPyPackages,
-								language: "python",
+									"In this step, we design the EchoLens frame using Solidworks to fit the ESP32-CAM, battery, and other essential components. After crafting a detailed 3D model, we optimize the design for 3D printing, selecting suitable materials and print settings to ensure durability and functionality. Finally, we print the frame, creating the physical structure needed for assembling the EchoLens smart glasses.",
+								images: ["", "", ""],
+								conclusion:
+									"You can download all the 3D designs from our Thangs profile or GitHub repository for your convenience.",
 							}}
-						/> */}
+						/>
 					</>
 				</div>
 				<AuthorInfo
