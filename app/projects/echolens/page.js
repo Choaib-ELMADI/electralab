@@ -17,6 +17,7 @@ import {
 	// DemoWithVideo,
 	Introduction,
 	Steps,
+	WebInterfaceSetup,
 	// SetUpEnvironment,
 } from "./utils";
 
@@ -302,6 +303,27 @@ export default function EchoLensPage() {
 							props={{
 								id: "ai-model",
 								title: "AI Model for Sign Language",
+							}}
+						/>
+					</>
+
+					<>
+						<WebInterfaceSetup
+							props={{
+								id: "web-interface-setup",
+								title: "Web Interface Setup",
+								description_s:
+									"In this step, we set up a web interface to support the functionalities of EchoLens. The web page is served by the ESP32-CAM and provides an intuitive interface for users. We implement two key features: ",
+								description_m:
+									", which captures and converts speech to text displayed on the interface, and ",
+								description_e:
+									", which processes and translates sign language gestures into spoken words. This web interface ensures seamless interaction and accessibility for users.",
+								images: [
+									"/projects/echolens/webpage__dark.png",
+									"/projects/echolens/webpage__light.png",
+								],
+								conclusion:
+									"Note that, both the CSS code and the JavaScript code should be inside the same HTML file. All web interface code is available for download from our GitHub repository.",
 							}}
 						/>
 					</>
