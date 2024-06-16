@@ -377,6 +377,7 @@ export const WebInterfaceSetup = ({
 		description_m,
 		description_e,
 		images,
+		note,
 		conclusion,
 	},
 }) => {
@@ -1301,6 +1302,7 @@ export const WebInterfaceSetup = ({
 					code: jsCode,
 				}}
 			/>
+			<p className="text-small mt-2">{note}</p>
 			<p className="text-small mt-2">{conclusion}</p>
 			<RedirectLink
 				link="https://github.com/Choaib-ELMADI/echolens/tree/main/Programs/Main"

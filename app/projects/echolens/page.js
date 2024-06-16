@@ -322,8 +322,9 @@ export default function EchoLensPage() {
 									"/projects/echolens/webpage__dark.png",
 									"/projects/echolens/webpage__light.png",
 								],
+								note: "Note that, both the CSS code and the JavaScript code should be inside the same HTML file.",
 								conclusion:
-									"Note that, both the CSS code and the JavaScript code should be inside the same HTML file. All web interface code is available for download from our GitHub repository.",
+									"All web interface code is available for download from our GitHub repository.",
 							}}
 						/>
 					</>
