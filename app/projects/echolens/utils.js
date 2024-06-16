@@ -1312,9 +1312,7 @@ export const WebInterfaceSetup = ({
 	);
 };
 
-export const IntegrationAndTesting = ({
-	props: { id, title, description },
-}) => {
+export const Integration = ({ props: { id, title, description } }) => {
 	return (
 		<div id={id} className="mt-8">
 			<Link
@@ -1328,6 +1326,27 @@ export const IntegrationAndTesting = ({
 				/>
 			</Link>
 			<p className="text-small mb-3">{description}</p>
+		</div>
+	);
+};
+
+export const Testing = ({ props: { id, title, description } }) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				{title}{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">{description}</p>
+			<video controls autoPlay={false} className="w-full rounded-sm">
+				<source src="/projects/echolens/demo.mp4" />
+			</video>
 		</div>
 	);
 };

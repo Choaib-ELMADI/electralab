@@ -6,20 +6,16 @@ import SimplifiedCode from "@/components/utils/simplified-code";
 import AuthorInfo from "@/components/utils/author-info";
 import Support from "@/components/utils/support";
 import Header from "@/components/utils/header";
-import Code from "@/components/utils/code";
 
 import {
 	AIModel,
 	DesignStep,
-	IntegrationAndTesting,
+	Integration,
 	// Conclusion,
-	// DemoWithImage,
-	// DemoWithRealTimeVideo,
-	// DemoWithVideo,
 	Introduction,
 	Steps,
+	Testing,
 	WebInterfaceSetup,
-	// SetUpEnvironment,
 } from "./utils";
 
 const mainCppCode = `
@@ -497,10 +493,10 @@ export default function EchoLensPage() {
 					</>
 
 					<>
-						<IntegrationAndTesting
+						<Integration
 							props={{
 								id: "integration-and-testing",
-								title: "Integration and Testing",
+								title: "Integration",
 								description:
 									"In this step, we integrate all components of the EchoLens system and perform thorough testing to ensure functionality and reliability. This involves combining the frame, PCB, AI model, and web interface into a cohesive unit. The main C++ program on the ESP32-CAM handles data capture and communication, while the main Python code manages the AI model's processing and interpretation of sign language gestures.",
 							}}
@@ -519,6 +515,17 @@ export default function EchoLensPage() {
 									"https://github.com/Choaib-ELMADI/echolens/tree/main/Programs/Main",
 								code: mainPythonCode,
 								language: "python",
+							}}
+						/>
+					</>
+
+					<>
+						<Testing
+							props={{
+								id: "integration-and-testing",
+								title: "Testing",
+								description:
+									"After integrating these elements, we conduct extensive testing to verify that the speech-to-text and sign language translation features work accurately and smoothly. This process includes debugging, performance optimization, and validating the interaction between hardware and software.",
 							}}
 						/>
 					</>
