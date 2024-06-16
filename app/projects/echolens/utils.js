@@ -141,7 +141,16 @@ export const AIModel = ({ props: { id, title } }) => {
 		"/projects/echolens/nothing.jpg",
 	];
 
-	const dataCollectionProgram = `	# Import Libraries
+	const dataCollectionProgram = `
+	'''
+		Data Collection Program
+
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	'''
+
+	# Import Libraries
 	import mediapipe as mp
 	import numpy as np
 	import cv2
@@ -243,7 +252,16 @@ export const AIModel = ({ props: { id, title } }) => {
 	cap.release()
 	cv2.destroyAllWindows()`;
 
-	const trainingProgram = `	from sklearn.tree import DecisionTreeClassifier
+	const trainingProgram = `
+	'''
+		Training Program
+
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	'''
+
+	from sklearn.tree import DecisionTreeClassifier
 	import pandas as pd
 	import joblib
 	import warnings
@@ -381,7 +399,16 @@ export const WebInterfaceSetup = ({
 		conclusion,
 	},
 }) => {
-	const htmlCode = `	<!DOCTYPE html>
+	const htmlCode = `
+	<!--
+		Basic HTML Structure
+
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	--!>
+	
+	<!DOCTYPE html>
 	<html>
 		<head>
 			<meta charset="utf-8" />
@@ -524,7 +551,16 @@ export const WebInterfaceSetup = ({
 		</body>
 	</html>`;
 
-	const cssCode = `	* {
+	const cssCode = `
+	/*
+		HTML Structure Styling
+
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	*/
+	
+	* {
 		padding: 0;
 		margin: 0;
 		box-sizing: border-box;
@@ -973,7 +1009,16 @@ export const WebInterfaceSetup = ({
 		}
 	}`;
 
-	const jsCode = `	document.onreadystatechange = function () {
+	const jsCode = `
+	/*
+		Main JavaScript Program
+
+		by Choaib ELMADI   https://elmadichoaib.vercel.app
+
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	*/
+	
+	document.onreadystatechange = function () {
 		if (document.readyState == "complete") {
 			//* ========================================================================================= *//
 			const languageForm = document.getElementById("language-form");
