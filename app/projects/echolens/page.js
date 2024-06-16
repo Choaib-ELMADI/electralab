@@ -11,6 +11,7 @@ import Code from "@/components/utils/code";
 import {
 	AIModel,
 	DesignStep,
+	IntegrationAndTesting,
 	// Conclusion,
 	// DemoWithImage,
 	// DemoWithRealTimeVideo,
@@ -21,211 +22,377 @@ import {
 	// SetUpEnvironment,
 } from "./utils";
 
-const installPyPackages = `
-	pip install cvzone==1.5.6 ultralytics==8.0.26 hydra-core>=1.2.0 matplotlib>=3.2.2 numpy>=1.18.5 opencv-python==4.5.4.60 Pillow>=7.1.2 PyYAML>=5.3.1 requests>=2.23.0 scipy>=1.4.1 torch>=1.7.0 torchvision>=0.8.1 tqdm>=4.64.0 filterpy==1.4.5 scikit-image==0.19.3 lap==0.4.0   
+const mainCppCode = `
+	/*
+		Main.ino Program
 
-`;
-const staticImageTestingCode = `
-	"""
-		Static Image Test
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
-	"""
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	*/
 
-	from ultralytics import YOLO  
-	import cv2
+	#include "camera_index.h"
+	#include "camera_pins.h"
+	#include "esp_camera.h"
+	#include <WebServer.h>
+	#include <WiFi.h>
 
-	model = YOLO(
-		# Path to the YOLO weights if installed. If not, provide the location for installation
-		# Use yolov8n (nano), yolov8m (medium) or yolov8l (large)
-		"yolov8n.pt"
-	)
+	bool DEBUGGING = true;
 
-	results = model(
-		"cars.png", # Path to the image
-		show=True,  # Show the output image
-	)
+	const char *ssid = "Choaibs-Phone";
+	const char *password = "devchoaib";
 
-	# Keep image opened until the user presses a key
-	cv2.waitKey(0)
+	bool isListening = false;
+	bool isTalking = false;
+	String signTextData = "_BLANK_";
+	String selectedLang = "EN";
+	unsigned long lastDataMillis = 0;
+	const uint8_t delayTime = 250;
 
-`;
-const staticVideoTestingCode = `
-	"""
-		Static Video Test
+	const uint8_t listeningLED = 14;
+	const uint8_t talkingLED = 2;
+	const long listeningLEDInterval = 250;
+	const long talkingLEDInterval = 250;
+	unsigned long previousMillisArray[2] = {0, 0};
+	bool ledStateArray[2] = {LOW, LOW};
+
+	WebServer server(80);
+
+	void setupCamera();
+	camera_config_t setupConfiguration();
+	void connectToWiFi();
+	void startCameraServer();
+
+	/**********************************/
+	/*             MAIN               */
+	/**********************************/
+	void setup() {
+		pinMode(listeningLED, OUTPUT);
+		pinMode(talkingLED, OUTPUT);
+		digitalWrite(listeningLED, HIGH);
+		digitalWrite(talkingLED, HIGH);
+
+		Serial.begin(115200);
+
+		setupCamera();
+		Serial.println("Done setup camera.");
+
+		connectToWiFi();
+		Serial.println("Done connect WiFi.");
+
+		server.on("/", sendMainPage);
+		server.on("/GET_TEXT_SIGN", getTextSign);        // Get text from Py
+		server.on("/SEND_TEXT_SIGN", sendTextSign);      // Send text to JS
+		server.on("/TOGGLE_LISTENING", toggleListening); // Toggle listening
+		server.on("/TOGGLE_TALKING", toggleTalking);     // Toggle talking
+		server.on("/IS_TALKING", sendTalkingState);      // Send talking state to Py
+		server.on("/GET_SELECTED_LANG", getSelectedLang);   // Get lang from JS
+		server.on("/SEND_SELECTED_LANG", sendSelectedLang); // Send lang to Py
+
+		server.begin();
+
+		digitalWrite(listeningLED, LOW);
+		digitalWrite(talkingLED, LOW);
+	}
+	void loop() {
+		if (millis() - lastDataMillis >= delayTime) {
+			lastDataMillis = millis();
+
+			if (isListening) {
+				blinkLED(listeningLED, listeningLEDInterval, 0);
+				// digitalWrite(talkingLED, LOW);
+			} else {
+				digitalWrite(listeningLED, LOW);
+			}
+
+			if (isTalking) {
+				blinkLED(talkingLED, talkingLEDInterval, 1);
+				// digitalWrite(listeningLED, LOW);
+			} else {
+				digitalWrite(talkingLED, LOW);
+			}
+
+			if (DEBUGGING) {
+				printData();
+			}
+		}
+
+		server.handleClient();
+	}
+
+	/**********************************/
+	/*         WIFI & CAMERA          */
+	/**********************************/
+	void setupCamera() {
+		camera_config_t config = setupConfiguration();
+
+		esp_err_t err = esp_camera_init(&config);
+		if (err != ESP_OK) {
+			Serial.printf("Camera init failed with error 0x%x", err);
+			return;
+		}
+
+		sensor_t *s = esp_camera_sensor_get();
+		s->set_framesize(s, FRAMESIZE_VGA);
+	}
+	camera_config_t setupConfiguration() {
+		camera_config_t config;
+
+		config.ledc_channel = LEDC_CHANNEL_0;
+		config.ledc_timer = LEDC_TIMER_0;
+		config.pin_d0 = Y2_GPIO_NUM;
+		config.pin_d1 = Y3_GPIO_NUM;
+		config.pin_d2 = Y4_GPIO_NUM;
+		config.pin_d3 = Y5_GPIO_NUM;
+		config.pin_d4 = Y6_GPIO_NUM;
+		config.pin_d5 = Y7_GPIO_NUM;
+		config.pin_d6 = Y8_GPIO_NUM;
+		config.pin_d7 = Y9_GPIO_NUM;
+		config.pin_xclk = XCLK_GPIO_NUM;
+		config.pin_pclk = PCLK_GPIO_NUM;
+		config.pin_vsync = VSYNC_GPIO_NUM;
+		config.pin_href = HREF_GPIO_NUM;
+		config.pin_sccb_sda = SIOD_GPIO_NUM;
+		config.pin_sccb_scl = SIOC_GPIO_NUM;
+		config.pin_pwdn = PWDN_GPIO_NUM;
+		config.pin_reset = RESET_GPIO_NUM;
+		config.xclk_freq_hz = 10000000;
+		config.frame_size = FRAMESIZE_VGA;
+		config.pixel_format = PIXFORMAT_JPEG;
+		config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
+		config.fb_location = CAMERA_FB_IN_PSRAM;
+		config.jpeg_quality = 16;
+		config.fb_count = 1;
+
+		return config;
+	}
+	void connectToWiFi() {
+		WiFi.begin(ssid, password);
+		WiFi.setSleep(false);
+
+		while (WiFi.status() != WL_CONNECTED) {
+			delay(500);
+			Serial.print(".");
+		}
+		Serial.println("");
+		Serial.println("WiFi connected");
+
+		startCameraServer();
+
+		Serial.print("Camera Ready! Use 'http://");
+		Serial.print(WiFi.localIP());
+		Serial.println("' to connect");
+	}
+
+	/**********************************/
+	/*          DEBUGINNING           */
+	/**********************************/
+	void printData() {
+		Serial.print("Listening: ");
+		Serial.print(isListening);
+
+		Serial.print(", Talking: ");
+		Serial.print(isTalking);
+
+		Serial.print(", data: ");
+		Serial.print(signTextData);
+
+		Serial.print(", lang: ");
+		Serial.println(selectedLang);
+	}
+
+	/**********************************/
+	/*        RENDER WEBPAGE          */
+	/**********************************/
+	void sendMainPage() { server.send(200, "text/html", htmlWebPage); }
+
+	/**********************************/
+	/*      COMMUNICATION HERE        */
+	/**********************************/
+	void toggleListening() {
+		String listeningState = server.arg("state");
+		isListening = listeningState.toInt();
+		server.send(200, "text/plain", "");
+	}
+	void toggleTalking() {
+		String talkingState = server.arg("state");
+		isTalking = talkingState.toInt();
+		server.send(200, "text/plain", "");
+	}
+	void getTextSign() {
+		signTextData = server.arg("signs");
+		server.send(200, "text/plain", "");
+	}
+	void sendTextSign() { server.send(200, "text/plain", signTextData); }
+	void sendTalkingState() { server.send(200, "text/plain", String(isTalking)); }
+	void getSelectedLang() {
+		selectedLang = server.arg("lang");
+		server.send(200, "text/plain", "");
+	}
+	void sendSelectedLang() { server.send(200, "text/plain", selectedLang); }
+
+	/**********************************/
+	/*         FUNCTIONS HERE         */
+	/**********************************/
+	void blinkLED(uint8_t ledPin, long interval, uint8_t ledIndex) {
+		if (millis() - previousMillisArray[ledIndex] >= interval) {
+			previousMillisArray[ledIndex] = millis();
+
+			if (ledStateArray[ledIndex] == LOW)
+				ledStateArray[ledIndex] = HIGH;
+			else
+				ledStateArray[ledIndex] = LOW;
+
+			digitalWrite(ledPin, ledStateArray[ledIndex]);
+		}
+	}`;
+
+const mainPythonCode = `
+	'''
+		main.py Program
+
 		by Choaib ELMADI   https://elmadichoaib.vercel.app
 
-		Give it a star :   https://github.com/Choaib-ELMADI/Computer-Vision/
-	"""
+		Give it a star :   https://github.com/Choaib-ELMADI/echolens/
+	'''
 
-	from ultralytics import YOLO
-	from sort import *
+	# ====>
+	import sign_language_model
+	import mediapipe as mp
+	import numpy as np
+	import requests
 	import cvzone
-	import math
 	import cv2
 
-	targetClassNames = ["car", "motorbike", "bus", "truck"]
-	classNames = [
-		"person",
-		"bicycle",
-		"car",
-		"motorbike",
-		"aeroplane",
-		"bus",
-		"train",
-		"truck",
-		"boat",
-		"traffic light",
-		"fire hydrant",
-		"stop sign",
-		"parking meter",
-		"bench",
-		"bird",
-		"cat",
-		"dog",
-		"horse",
-		"sheep",
-		"cow",
-		"elephant",
-		"bear",
-		"zebra",
-		"giraffe",
-		"backpack",
-		"umbrella",
-		"handbag",
-		"tie",
-		"suitcase",
-		"frisbee",
-		"skis",
-		"snowboard",
-		"sports ball",
-		"kite",
-		"baseball bat",
-		"baseball glove",
-		"skateboard",
-		"surfboard",
-		"tennis racket",
-		"bottle",
-		"wine glass",
-		"cup",
-		"fork",
-		"knife",
-		"spoon",
-		"bowl",
-		"banana",
-		"apple",
-		"sandwich",
-		"orange",
-		"broccoli",
-		"carrot",
-		"hot dog",
-		"pizza",
-		"donut",
-		"cake",
-		"chair",
-		"sofa",
-		"pottedplant",
-		"bed",
-		"diningtable",
-		"toilet",
-		"tvmonitor",
-		"laptop",
-		"mouse",
-		"remote",
-		"keyboard",
-		"cell phone",
-		"microwave",
-		"oven",
-		"toaster",
-		"sink",
-		"refrigerator",
-		"book",
-		"clock",
-		"vase",
-		"scissors",
-		"teddy bear",
-		"hair drier",
-		"toothbrush",
-	]
-	limits = [360, 297, 673, 297]
-	totalCount = []
-	lineColor = (0, 0, 255)
+	# ====>
+	print("Loaded.")
 
-	mask = cv2.imread(
-		# Track only a specific region in the video
-		"mask.png"
-	)
-	cap = cv2.VideoCapture(
-		# Path to the video location
-		"cars.mp4"
-	)
+	# ====>
+	mp_drawing_styles = mp.solutions.drawing_styles  # type: ignore
+	mp_drawing = mp.solutions.drawing_utils  # type: ignore
+	mp_hands = mp.solutions.hands  # type: ignore
+	hands = mp_hands.Hands(max_num_hands=1)
 
-	model = YOLO(
-		# Path to the YOLO weights if installed. If not, provide the location for installation
-		# Use yolov8n (nano), yolov8m (medium) or yolov8l (large)
-		"yolov8n.pt"
-	)
-	
-	# Check this github account for the Sort algorithm: https://github.com/abewley
-	tracker = Sort(max_age=20, min_hits=3, iou_threshold=0.3)
+	# ====>
+	url = "http://192.168.169.196"
+	get_talking_state_url = f"{ url }/IS_TALKING"
+	get_lang_url = f"{ url }/SEND_SELECTED_LANG"
+	gesture = "_BLANK_"
+	selected_lang = "EN"
+	list_message = []
+	text_message = ""
+	is_talking = False
+	is_end_of_phrase = False
 
+	# ====>
+	text_background = (198, 63, 88)  # PURPLE
+	corner_color = (53, 53, 249)  # RED
+	text_color = (239, 239, 239)  # WHITE
+	border_color = (61, 147, 8)  # GREEN
+
+	# ====>
+	stream_url = f"{ url }:81/stream"
+	my_cap = cv2.VideoCapture(0)
+	cap = cv2.VideoCapture(stream_url)
+
+	counter = 0
 	while True:
+		# ====>
 		_, frame = cap.read()
-		frameRegion = cv2.bitwise_and(frame, mask)
-		results = model(frameRegion, stream=True)
+		frame_copy = np.copy(frame)
+		frame_copy = cv2.cvtColor(frame_copy, cv2.COLOR_BGR2RGB)
+		frame = cv2.resize(frame, (400, 300))
 
-		detections = np.empty((0, 5))
+		_, my_frame = my_cap.read()
+		my_frame = cv2.resize(my_frame, (400, 300))
 
-		for r in results:
-			boxes = r.boxes
-			for box in boxes:
-				cls = int(box.cls[0])
-				currentClass = classNames[cls]
+		# ====>
+		get_talking_response = requests.get(get_talking_state_url)
+		if get_talking_response.status_code == 200:
+			is_talking = get_talking_response.json()
 
-				if currentClass in targetClassNames:
-					x1, y1, x2, y2 = box.xyxy[0]
-					x1, y1, w, h = int(x1), int(y1), int(x2 - x1), int(y2 - y1)
-					conf = math.floor(box.conf[0] * 100) / 100
+		# ====>
+		if is_talking:
+			get_lang_response = requests.get(get_lang_url)
+			if get_lang_response.status_code == 200:
+				selected_lang = get_lang_response.text
 
-					currentArray = np.array([x1, y1, x2, y2, conf])
-					detections = np.vstack((detections, currentArray))
+			hand_keypoints = np.zeros(21 * 2)
+			results = hands.process(frame_copy)
 
-		trackerResults = tracker.update(detections)
-		cv2.line(frame, (limits[0], limits[1]), (limits[2], limits[3]), lineColor, 3)
+			if results.multi_hand_landmarks:
+				for hand_landmarks in results.multi_hand_landmarks:
+					mp_drawing.draw_landmarks(
+						image=frame,
+						landmark_list=hand_landmarks,
+						connections=mp_hands.HAND_CONNECTIONS,
+					)
 
-		cvzone.putTextRect(
-			frame,
-			f"Total Count: {len(totalCount)}",
-			(8, 24),
-			1.5,
-			2,
-			(255, 255, 255),
-			(247, 127, 0),
-			cv2.FONT_HERSHEY_PLAIN,
-			5,
-		)
+				hand_keypoints = np.array(
+					[
+						[landmark.x, landmark.y]
+						for landmark in results.multi_hand_landmarks[0].landmark
+					]
+				).flatten()
 
-		for res in trackerResults:
-			x1, y1, x2, y2, id = res
-			x1, y1, w, h = int(x1), int(y1), int(x2 - x1), int(y2 - y1)
-			cvzone.cornerRect(frame, (x1, y1, w, h), 10, 2, 1)
-			cvzone.putTextRect(frame, f"{int(id)}", (x1, y1 - 5))
+			if counter % 30 == 0:
+				gesture = sign_language_model.predict_hand_gesture(
+					hand_keypoints, selected_lang
+				)
 
-			cx, cy = int(x1 + w / 2), int(y1 + h / 2)
-			cv2.circle(frame, (cx, cy), 3, (247, 127, 0), cv2.FILLED)
+			if gesture != "_BLANK_" and gesture not in list_message:
+				if gesture == ".":
+					is_end_of_phrase = True
 
-			if limits[0] <= cx <= limits[2] and limits[1] - 15 <= cy <= limits[1] + 15:
-				if totalCount.count(id) == 0:
-					lineColor = (0, 255, 0)
-					totalCount.append(id)
-				else:
-					lineColor = (0, 0, 255)
+				list_message.append(gesture)
 
-		cv2.imshow("Cars Counter", frame)
-		cv2.waitKey(1)
+				if len(list_message) > 0 and list_message[0] == ".":
+					list_message.pop(0)
 
-`;
+		# ====>
+		text_message = " ".join(list_message).strip()
+		image_text_message = " ".join(list_message[-4:]).strip()
+		if image_text_message and image_text_message != ".":
+			cvzone.putTextRect(
+				frame,
+				f"{image_text_message}",
+				pos=(30, 50),
+				scale=1,
+				thickness=1,
+				colorT=text_color,
+				colorR=text_background,
+				font=cv2.FONT_HERSHEY_COMPLEX_SMALL,
+				offset=8,
+				border=1,
+				colorB=text_color,
+			)
+		cv2.imshow("Frame", frame)
+		cv2.imshow("Me", my_frame)
+
+		# ====>
+		if is_end_of_phrase:
+			if text_message and text_message != ".":
+				post_url = f"{url}/GET_TEXT_SIGN?signs={text_message}"
+				post_response = requests.post(post_url)
+				if post_response.status_code == 200:
+					list_message = []
+					text_message = ""
+					image_text_message = ""
+					is_end_of_phrase = False
+
+		# ====>
+		counter += 1
+		key = cv2.waitKey(1) & 0xFF
+		if key == ord("c"):
+			list_message = []
+			text_message = ""
+		if key == ord("q"):
+			break
+
+	# ====>
+	cap.release()
+	my_cap.release()
+	cv2.destroyAllWindows()`;
 
 export default function EchoLensPage() {
 	return (
@@ -325,6 +492,33 @@ export default function EchoLensPage() {
 								note: "Note that, both the CSS code and the JavaScript code should be inside the same HTML file.",
 								conclusion:
 									"All web interface code is available for download from our GitHub repository.",
+							}}
+						/>
+					</>
+
+					<>
+						<IntegrationAndTesting
+							props={{
+								id: "integration-and-testing",
+								title: "Integration and Testing",
+								description:
+									"In this step, we integrate all components of the EchoLens system and perform thorough testing to ensure functionality and reliability. This involves combining the frame, PCB, AI model, and web interface into a cohesive unit. The main C++ program on the ESP32-CAM handles data capture and communication, while the main Python code manages the AI model's processing and interpretation of sign language gestures.",
+							}}
+						/>
+						<SimplifiedCode
+							props={{
+								githubLink:
+									"https://github.com/Choaib-ELMADI/echolens/tree/main/Programs/Main",
+								code: mainCppCode,
+								language: "cpp",
+							}}
+						/>
+						<SimplifiedCode
+							props={{
+								githubLink:
+									"https://github.com/Choaib-ELMADI/echolens/tree/main/Programs/Main",
+								code: mainPythonCode,
+								language: "python",
 							}}
 						/>
 					</>

@@ -1311,3 +1311,23 @@ export const WebInterfaceSetup = ({
 		</div>
 	);
 };
+
+export const IntegrationAndTesting = ({
+	props: { id, title, description },
+}) => {
+	return (
+		<div id={id} className="mt-8">
+			<Link
+				href={`#${id}`}
+				className="group text-medium mb-2 font-[500] w-max hover:text-purple transition-all"
+			>
+				{title}{" "}
+				<LinkIcon
+					size={20}
+					className="inline text-secondary group-hover:text-purple transition-all"
+				/>
+			</Link>
+			<p className="text-small mb-3">{description}</p>
+		</div>
+	);
+};
