@@ -443,8 +443,8 @@ export default function MiniBalanceRobot() {
 							props={{
 								prev: "/projects/poker-card-game",
 								prevTitle: "Poker Card Game",
-								next: "/",
-								nextTitle: "Home",
+								next: "/projects/echolens",
+								nextTitle: "EchoLens",
 							}}
 						/>
 						<Support />

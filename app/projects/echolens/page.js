@@ -529,6 +529,18 @@ export default function EchoLensPage() {
 							}}
 						/>
 					</>
+
+					<>
+						<NavigateToOtherProjects
+							props={{
+								prev: "/projects/mini-balance-robot",
+								prevTitle: "Mini Balance Robot",
+								next: "/",
+								nextTitle: "Home",
+							}}
+						/>
+						<Support />
+					</>
 				</div>
 				<AuthorInfo
 					props={{
