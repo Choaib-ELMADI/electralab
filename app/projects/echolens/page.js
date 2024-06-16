@@ -9,6 +9,7 @@ import Header from "@/components/utils/header";
 import Code from "@/components/utils/code";
 
 import {
+	AIModel,
 	DesignStep,
 	// Conclusion,
 	// DemoWithImage,
@@ -292,6 +293,15 @@ export default function EchoLensPage() {
 										text: "Github - Gerber Files",
 									},
 								],
+							}}
+						/>
+					</>
+
+					<>
+						<AIModel
+							props={{
+								id: "ai-model",
+								title: "AI Model for Sign Language",
 							}}
 						/>
 					</>
