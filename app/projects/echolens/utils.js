@@ -116,7 +116,12 @@ export const DesignStep = ({
 			</div>
 			<p className="text-small mt-2">{conclusion}</p>
 			{links.map(({ link, text }, index) => (
-				<RedirectLink link={link} text={text} index={`link-${index}`} />
+				<RedirectLink
+					link={link}
+					text={text}
+					index={`link-${index}`}
+					key={`link-${index}`}
+				/>
 			))}
 		</div>
 	);
@@ -1301,11 +1306,11 @@ export const WebInterfaceSetup = ({
 			<p className="text-small mb-3">
 				{description_s}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					" Listen Mode "
+					&rdquo; Listen Mode &rdquo;
 				</span>
 				{description_m}
 				<span className="bg-gradient-to-r from-purple to-pink bg-clip-text text-transparent font-semibold">
-					" Talk Mode "
+					&rdquo; Talk Mode &rdquo;
 				</span>
 				{description_e}
 			</p>
