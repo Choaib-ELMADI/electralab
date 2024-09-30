@@ -247,7 +247,7 @@ export default function RadioControl() {
 					props={{
 						profile: PorfileImage,
 						description:
-							"I'm an embedded systems engineering student. I am currently pursuing a degree in Embedded Systems and Systems Control Engineering, where I engage in practical work involving robotics, electronics, and programming with platforms like Arduino and Raspberry Pi.",
+							"Hi! I'm Choaib. I'm an embedded systems engineering student, currently pursuing a degree in Embedded Systems and Systems Control Engineering. My work focuses on robotics, electronics, and programming using platforms like Arduino and Raspberry Pi. In addition to embedded systems, I am proficient in web development, building applications with technologies like React, Next.js, and TailwindCSS, which complement my engineering projects by creating intuitive interfaces and real-time control systems.",
 						name: "Choaib ELMADI",
 						link: "https://elmadichoaib.vercel.app",
 					}}
