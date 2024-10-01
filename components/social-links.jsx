@@ -19,7 +19,7 @@ const socialLinks = [
 	},
 	{
 		title: "Facebook",
-		link: "https://www.facebook.com/choaib.elmadi.94",
+		link: "https://www.facebook.com/choaib.ce",
 		icon: Facebook,
 	},
 ];
