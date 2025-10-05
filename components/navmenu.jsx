@@ -41,7 +41,7 @@ const NavMenu = () => {
 			<CompletedProjectsMenu />
 			<div className="w-[1px] h-[18px] bg-secondary" />
 			<Link
-				href="mailto:choaib3elmadi@gmail.com"
+				href="mailto:choaibamd@gmail.com"
 				className="bg-gradient-to-r from-purple to-pink text-tiny text-background dark:text-text px-4 py-[2px] rounded-full whitespace-nowrap hidden dm:flex items-center gap-2"
 			>
 				<Mail size={18} /> Let&rsquo;s Talk

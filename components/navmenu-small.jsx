@@ -50,7 +50,7 @@ const SmallNavMenu = ({ links }) => {
 					</div>
 					<SocialLinks styles="mt-auto mb-4" />
 					<Link
-						href="mailto:choaib3elmadi@gmail.com"
+						href="mailto:choaibamd@gmail.com"
 						className="bg-gradient-to-r from-purple to-pink text-medium text-background dark:text-text px-4 py-[2px] rounded-full whitespace-nowrap flex items-center justify-center gap-2"
 					>
 						<Mail size={24} /> Let&rsquo;s Talk
