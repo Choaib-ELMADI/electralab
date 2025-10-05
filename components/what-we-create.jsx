@@ -73,7 +73,7 @@ const WhatWeCreate = () => {
 							Let&rsquo;s create your next big project together.
 						</h1>
 						<Link
-							href="mailto:choaib3elmadi@gmail.com"
+							href="mailto:choaibamd@gmail.com"
 							className="bg-gradient-to-r from-purple to-pink text-small text-background dark:text-text px-4 py-1 rounded-sm whitespace-nowrap flex items-center gap-2"
 						>
 							<Mail size={20} /> Get In Touch
